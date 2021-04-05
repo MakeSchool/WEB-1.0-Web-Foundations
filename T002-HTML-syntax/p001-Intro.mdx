@@ -1,5 +1,5 @@
 ---
-title: 'Intro'
+title: 'Intro to HTML'
 slug: 'intro'
 contentType: 'TextContent'
 ---
@@ -38,6 +38,9 @@ webpage. Let's break down the parts of the syntax.
 `<p>` is an HTML **tag**. It starts an element, and says what kind of element it is - in this case,
 `p` is for a _paragraph_ element.
 
+Each tag has an opening angle bracket `<`, then the name of the tag (like `p`), then a closing angle
+bracket `>`.
+
 `</p>` is a **closing tag**. It says "the paragraph ends here". Notice that it has a forward slash
 `/`. Everything between the opening tag and closing tag are inside of the element.
 
@@ -47,20 +50,14 @@ In between the opening and closing tags is some text:
 `This tender treat is a perfect use for any old bananas you have sitting on the counter.` It's what
 actually shows up on the page.
 
-Let's learn about these elements.
-
-`h1` is a _heading level one_ tag. It means the has the effect of making the text big. `h1` is the
-biggest size heading, usually used for the title of the page. There's 6 levels of heading, with 6
-tags, representing a smaller heading as the number goes up: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`.
-
-`ul` stands for _unordered list_. It makes a list. The list items inside each get a dot next to
-them.
-
-`li` is a _list item_. These are the elements in the list. Since they're between the opening and
-closing tags the `ul` element, they appear inside the same list.
-
-`img` is an _image_. It has a new syntax too: an attribute `src` for the source of the image. That
-`src` is the location where the browser can find the image itself.
+<TextResponse>
+<Prompt>
+Find the angle brackets on your keyboard and practice typing them.
+</Prompt>
+<Explanation>
+On a US-style english keyboard layout, the angle brackets are on the comma (`,`) and period (`.`) keys, towards the bottom right side of the keyboard. Hold shift and press `,` for the `<` character. Shift + `.` for the `>` character.
+</Explanation>
+</TextResponse>
 
 ## More HTML Elements
 
@@ -97,84 +94,114 @@ The four elements are:
 </Explanation>
 </TextResponse>
 
+Let's learn about these elements.
+
+`h1` is a _heading level one_ tag. It means the has the effect of making the text big. `h1` is the
+biggest size heading, usually used for the title of the page. There's 6 levels of heading, with 6
+tags, representing a smaller heading as the number goes up: `h1`, `h2`, `h3`, `h4`, `h5`, `h6`.
+
+`ul` stands for _unordered list_. It makes a list. The list items inside each get a dot next to
+them.
+
+`li` is a _list item_. These are the elements in the list. Since they're between the opening and
+closing tags the `ul` element, they appear inside the same list.
+
+`img` is an _image_. It has a new syntax too: an attribute `src` for the source of the image. That
+`src` is the location where the browser can find the image itself.
+
+## Attributes
+
+HTML elements sometimes need more info than just what kind of element they are. For example, the
+browser needs to know the `src` of the image so that it knows what to show.
+
+Attributes look like `src="./banana-bread.jpg"` or `height="100px"`. They usually have a name, an
+equals sign (`=`) then a value in quotes.
+
+Attributes go after the tag name, but before the closing angle bracket of the opening tag.
+
+Elements can have lots of attributes, or just one. There's a space between each one.
+
+```html
+<img src="./banana-bread.jpg" height="100px" width="300px" />
+```
+
 ## Nesting Elements
 
-## Summarizing the rules of HTML
+Elements can go inside other elements. We call this "nesting" - the _child_ element is nested inside
+the _parent_ element.
 
-## Vocab
+```html
+<ul>
+  <li>10 minutes prep time</li>
+</ul>
+```
 
-Here's the names of the different parts of syntax.
+The list item (`li`) is the _child_ element of the unordered list (`ul`).
 
-Vocab:
+The nesting can go as many levels deep as we want:
 
-- Tag
-- Element
-- Opening and closing tag
-- Angle bracket
-- Attribute
-- Parent element
-- Child element
-- Nesting
+```html
+<ul>
+  <li>
+    <p>
+      <img src="./banana-bread.jpg" />
+    </p>
+  </li>
+</ul>
+```
 
-## The most common elements
+Elements have to be fully nested, they can't intersect. This is **invalid**:
 
-- Most common elements
-  - Most common is ... just text!
-  - h1-h6
-  - p
-  - ul, ol, li
-  - img
+```html
+<ul>
+  <li>
+    10 minutes prep time.
+  </ul>
+</li>
+```
 
-## Common Errors
+We can see that the tags don't match up on the same lines, because we indented child elements deeper
+than their parents.
 
-When you're first learning the syntax, there's a bunch of common errors.
+## Rounding out the basic elements
 
-- typo for the name of an element
-- forgetting or using the wrong symbol in the wrong spot (typos for the HTML syntax)
-  - forgetting quotes around attributes
-  - wrong direction of the slash for a closing tag
-- forgetting a closing tag
-- improper nesting of tags (crossing the tags)
+There's two more elements you'll need for the recipe page.
 
-(Fix the error game)
+The first is the ordered list, `ol`. It works just like the unordered list, but it's _ordered_. It
+shows a number next to each list item.
 
-### Tips and Strategies
+<HtmlDemo
+  srcString="
+<ol>
+  <li>Preheat oven to 350˚F (180˚C).</li>
+  <li>In a bowl, add the bananas and mash until smooth. Add in the melted butter and stir until well combined.</li>
+  <li>Add the sugar, egg, vanilla, baking soda, salt, and flour, and stir until the batter is smooth.</li>
+</ol>
+"
+/>
 
-Formatting is your friend. The browser ignores whitespace like spaces, tabs, and newlines. It also
-ignores comments.
+Last, the element that makes the web different from other kinds of documents: the link.
 
-It's _much_ easier to spot mistakes if your HTML is formatted nicely. "Nicely" means that (for the
-most part) each new tag goes on a new line, indented further than its parent element. The closing
-tag is dedented, so the nested structure is visible.
+<HtmlDemo srcString="<a href='https://www.nngroup.com/articles/hypertext-history/'>The History of HyperText</a>'" />
 
-Comments are also super helpful. They have a funky syntax, so it's easy to mess them up too.
+The `a` stands for "anchor", which is a weird word for a link! Even weirder is `href`, the attribute
+that tells the browser where to go when you click. It stands for "Hypertext reference". It's a
+_reference_ - a pointer - to some other HyperText.
 
-- Highlight and use [ctrl /] to comment out a section
-- Use comments to name sections of your page
+What's "Hypertext"? Well - all of the web. `HTML` stands for "HyperText Markup Language". The web is
+made of hypertext - text with links to other text.
 
-Debugging HTML using comments.
+## Elements Summary
 
-- comment out the code you think is broken
-- comment it back in, piece by piece, to identify what's broken
+Here's the elements we've learned so far:
 
-## Developer Tool: Browser Inspector
+- `p`
+- `h1` through `h6`
+- `ul`, `ol`, and `li`
+- `img` (and the `src` attribute)
+- `a` (and the `href` attribute)
 
-Desktop browsers have a tool called the inspector or dev console that lets you see the code for a
-page.
+There's a lot more HTML elements. They all follow these syntax rules. To master the rules and these
+elements, you'll need to practice building sites by writing HTML.
 
-### Try it now
-
-- Somewhere on the page, secondary click (right click, two-finger click, or hold control and click)
-  to open the context menu
-- Click to open the inspector: "Inspect" in Chrome, or "Inspect Element" in Firefox or Safari.
-- See that the Inspector opens in a tray at the bottom or side of your screen:
-
-- The panel shows the HTML for all of the elements on the page
-- The highlighted element is the one that you clicked on
-- As you hover over other elements in the panel, you can see that the browser highlights the
-  corresponding elements on the page
-
-## Project: Recipe Page
-
-- Change the recipe site to use the correct elements
-- Turn this recipe blob into a website that looks like (this)
+Click to the next page to try building a recipe page of your own.

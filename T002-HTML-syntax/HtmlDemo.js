@@ -14,7 +14,6 @@ const styles = {
 };
 
 const HtmlDemo = ({srcString}) => {
-  console.log(srcString);
   return (
     <div style={styles.wrapper}>
       <div style={styles.tab}>
