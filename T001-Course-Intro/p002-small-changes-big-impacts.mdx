@@ -4,30 +4,122 @@ slug: 'small-changes-big-impacts'
 contentType: 'TextContent'
 ---
 
+import MagicDemo from '../MagicDemo';
+
 # Small Changes, Big Impacts
 
 Try the demos on this page to get a sense for what you'll learn in this course. In each one, you can
-make small changes to the code on the left, and see a big impact in the final product.
-
-TODO: adapt demos:
-
-- background image:
-  https://github.com/Make-School-Courses/WEB-1.0-Web-Foundations/blob/master/background-image.html
-- Text styles:
-  https://github.com/Make-School-Courses/WEB-1.0-Web-Foundations/blob/master/text-styles.html
-- position: https://github.com/Make-School-Courses/WEB-1.0-Web-Foundations/blob/master/position.html
-- flexbox: https://github.com/Make-School-Courses/WEB-1.0-Web-Foundations/blob/master/flex-box.html
-- box model:
-  https://github.com/Make-School-Courses/WEB-1.0-Web-Foundations/blob/master/box-model.html
+make small changes using the input, see the change that makes to the code, and see a big impact in
+the final product.
 
 ## Change the Text
 
-## Change Color
+Change the text to see how the code and output change.
 
-## Change Font
+Try to come up with a better title and tagline for the site.
 
-## Magic sliders / inputs
+<MagicDemo
+  input={(state = {title: 'Intro to Recycling', tagline: 'Learn about recycling'}, updateState) => (
+    <>
+      Title:{' '}
+      <input value={state.title} onChange={e => updateState({...state, title: e.target.value})} />
+      Tagline: <input
+        value={state.tagline}
+        onChange={e => updateState({...state, tagline: e.target.value})}
+      />
+    </>
+  )}
+  template={state => `<div><h1>${state.title}</h1><h2>${state.tagline}</h2></div>`}
+/>
+
+## Change the Colors
+
+Choose the color palette for the site. Pick a background color and a text color.
+
+<MagicDemo
+  input={(state = {backgroundColor: '#EEEEEE', color: '#111'}, updateState) => (
+    <>
+      Background Color:{' '}
+      <input
+        type="color"
+        value={state.backgroundColor}
+        onInput={e => updateState({...state, backgroundColor: e.target.value})}
+      />
+      Text Color: <input type="color" value={state.color} onInput={e => updateState({...state, color: e.target.value})} />
+    </>
+  )}
+  template={state =>
+    `<style>
+      div {
+        backgroundColor: ${state.backgroundColor};
+      }
+      h1, h2 {
+        color: ${state.color};
+      }
+    </style>
+    <div>
+      <h1>Small Changes, Big Impacts</h1>
+      <h2>An Exploration of Climate Action</h2>
+    </div>`
+  }
+/>
 
 ## Changing which element moves
 
-## Changing how many elements are shown / loaded
+Choose which elements should be animated
+
+<MagicDemo
+  input={(state = ['h1', 'h2'], updateState) => (
+    <>
+      <label for="h1">The title</label>
+      <input
+        type="checkbox"
+        id="h1"
+        onChange={e =>
+          updateState(e.target.checked ? [...state, 'h1'] : state.filter(el => el === 'h1'))
+        }
+      />
+      <label for="h2">The tagline</label>
+      <input
+        type="checkbox"
+        id="h2"
+        onChange={e =>
+          updateState(e.target.checked ? [...state, 'h2'] : state.filter(el => el === 'h2'))
+        }
+      />
+    </>
+  )}
+  template={state => `<style>
+      @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+      }
+    ${state.join(',')} {
+      animation: 1s ease-out 0s 1 slideInFromLeft;
+    }
+    </style>
+  <div>
+    <h1>${state.title}</h1>
+    <h2>${state.tagline}</h2>
+ </div>`}
+/>
+
+## Choose how many elements to show
+
+<MagicDemo
+  input={(state, updateState) => (
+    <>
+      How many to show:{' '}
+      <input
+        type="number"
+        value={state.count}
+        onChange={e => updateState({count: e.target.value})}
+      />
+    </>
+  )}
+  template={state => `<div><h1>${state.title}</h1><h2>${state.tagline}</h2></div>`}
+/>
