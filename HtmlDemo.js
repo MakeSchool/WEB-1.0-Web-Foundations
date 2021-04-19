@@ -11,9 +11,12 @@ const styles = {
     padding: 4,
     margin: 4,
   },
+  output: {
+    height: '100%',
+  },
 };
 
-const HtmlDemo = ({srcString}) => {
+const HtmlDemo = ({srcString, highlightLines}) => {
   return (
     <div style={styles.wrapper}>
       <div style={styles.tab}>
@@ -22,7 +25,7 @@ const HtmlDemo = ({srcString}) => {
       </div>
       <div style={styles.tab}>
         <div style={styles.label}>Result</div>
-        <iframe srcDoc={srcString}></iframe>
+        <iframe style={styles.output} srcDoc={srcString}></iframe>
       </div>
     </div>
   );

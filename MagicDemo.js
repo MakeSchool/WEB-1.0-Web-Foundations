@@ -13,8 +13,8 @@ const styles = {
   },
 };
 
-const MagicDemo = ({input, template}) => {
-  const [inputState, setInputState] = useState({});
+const MagicDemo = ({input, template, initialState = {}}) => {
+  const [inputState, setInputState] = useState(initialState);
 
   return (
     <>

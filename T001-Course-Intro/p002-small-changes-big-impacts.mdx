@@ -19,7 +19,8 @@ Change the text to see how the code and output change.
 Try to come up with a better title and tagline for the site.
 
 <MagicDemo
-  input={(state = {title: 'Intro to Recycling', tagline: 'Learn about recycling'}, updateState) => (
+  initialState={{title: 'Intro to Recycling', tagline: 'Learn about recycling'}}
+  input={(state, updateState) => (
     <>
       Title:{' '}
       <input value={state.title} onChange={e => updateState({...state, title: e.target.value})} />
@@ -29,7 +30,10 @@ Try to come up with a better title and tagline for the site.
       />
     </>
   )}
-  template={state => `<div><h1>${state.title}</h1><h2>${state.tagline}</h2></div>`}
+  template={state => `<div>
+  <h1>${state.title}</h1>
+  <h2>${state.tagline}</h2>
+</div>`}
 />
 
 ## Change the Colors
@@ -37,7 +41,8 @@ Try to come up with a better title and tagline for the site.
 Choose the color palette for the site. Pick a background color and a text color.
 
 <MagicDemo
-  input={(state = {backgroundColor: '#EEEEEE', color: '#111'}, updateState) => (
+  initialState={{backgroundColor: '#EEEEEE', color: '#111111'}}
+  input={(state, updateState) => (
     <>
       Background Color:{' '}
       <input
@@ -50,17 +55,17 @@ Choose the color palette for the site. Pick a background color and a text color.
   )}
   template={state =>
     `<style>
-      div {
-        backgroundColor: ${state.backgroundColor};
-      }
-      h1, h2 {
-        color: ${state.color};
-      }
-    </style>
-    <div>
-      <h1>Small Changes, Big Impacts</h1>
-      <h2>An Exploration of Climate Action</h2>
-    </div>`
+  div {
+    background-color: ${state.backgroundColor};
+  }
+  h1, h2 {
+    color: ${state.color};
+  }
+</style>
+<div>
+  <h1>Small Changes, Big Impacts</h1>
+  <h2>An Exploration of Climate Action</h2>
+</div>`
   }
 />
 
@@ -69,48 +74,52 @@ Choose the color palette for the site. Pick a background color and a text color.
 Choose which elements should be animated
 
 <MagicDemo
-  input={(state = ['h1', 'h2'], updateState) => (
+  initialState={['h2']}
+  input={(state, updateState) => (
     <>
       <label for="h1">The title</label>
       <input
         type="checkbox"
         id="h1"
+        defaultChecked={state.includes('h1')}
         onChange={e =>
-          updateState(e.target.checked ? [...state, 'h1'] : state.filter(el => el === 'h1'))
+          updateState(e.target.checked ? [...state, 'h1'] : state.filter(el => el !== 'h1'))
         }
       />
       <label for="h2">The tagline</label>
       <input
         type="checkbox"
         id="h2"
+        defaultChecked={state.includes('h2')}
         onChange={e =>
-          updateState(e.target.checked ? [...state, 'h2'] : state.filter(el => el === 'h2'))
+          updateState(e.target.checked ? [...state, 'h2'] : state.filter(el => el !== 'h2'))
         }
       />
     </>
   )}
   template={state => `<style>
-      @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-      }
-    ${state.join(',')} {
-      animation: 1s ease-out 0s 1 slideInFromLeft;
-    }
-    </style>
-  <div>
-    <h1>${state.title}</h1>
-    <h2>${state.tagline}</h2>
- </div>`}
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+${state.join(', ')} {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+</style>
+<div>
+  <h1>Small Changes, Big Impacts</h1>
+  <h2>An Exploration of Climate Action</h2>
+</div>`}
 />
 
 ## Choose how many elements to show
 
 <MagicDemo
+  initialState={{count: 15}}
   input={(state, updateState) => (
     <>
       How many to show:{' '}
@@ -121,5 +130,15 @@ Choose which elements should be animated
       />
     </>
   )}
-  template={state => `<div><h1>${state.title}</h1><h2>${state.tagline}</h2></div>`}
+  template={state => `
+<h1>Big list of impacts you can have</h1>
+<ol></ol>
+<script>
+  var list = document.querySelector('ol')
+  list.innerHTML = '';
+  for (let i = 0; i < ${state.count}; i++) {
+    list.innerHTML += '<li>Another one</li>'
+  }
+</script>
+`}
 />
