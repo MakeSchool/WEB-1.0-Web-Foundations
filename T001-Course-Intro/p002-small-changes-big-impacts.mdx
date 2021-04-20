@@ -127,6 +127,7 @@ ${state.join(', ')} {
         type="number"
         value={state.count}
         onChange={e => updateState({count: e.target.value})}
+        max="5000"
       />
     </>
   )}
@@ -137,8 +138,18 @@ ${state.join(', ')} {
   var list = document.querySelector('ol')
   list.innerHTML = '';
   for (let i = 0; i < ${state.count}; i++) {
-    list.innerHTML += '<li>Another one</li>'
+    var item = document.createElement('li');
+    item.appendChild(document.createTextNode('Another one'));
+    list.appendChild(item);
   }
 </script>
 `}
 />
+
+## Reflection
+
+Each of these demos illustrate something powerful that you'll learn in the rest of this course.
+Making small changes to the HTML, CSS, and JavaScript results in a big impact on the output.
+
+In the next lessons, you'll learn about how to write the code that generates the output, instead of
+just tweaking some of the inputs.
