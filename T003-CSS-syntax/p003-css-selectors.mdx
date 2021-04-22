@@ -12,10 +12,355 @@ So far, we've only selected elements based on the _tag_, like `h1` or `p`. That'
 But, there's lots of times when you might want to apply a property to only _some_ of the `p` tags,
 but not all of them. You can use other kinds of CSS selectors in those situations.
 
-## Recommended Resource: CSS Diner
+## Type Selector
+
+This is the main kind of selector you've been using so far. The type of HTML element you're styling
+is the selector.
+
+To select the `h1` elements, use the selector `h1`, like
+
+```css
+h1 {
+  color: blue;
+}
+```
+
+<FlashCard>
+<Prompt>
+
+What selector would you use to style all the paragraph elements?
+
+</Prompt>
+<Answer>
+
+Since the HTML tag is `<p>`, the CSS selector is `p`, like
+
+```css
+p {
+  color: blue;
+}
+```
+
+</Answer>
+</FlashCard>
+
+## Class Selector and Id Selector
+
+`class` and `id` are HTML attributes you can add to any element. They act as a target for you to
+pick them with a CSS selector.
+
+```html
+<p class="description">
+  This tender treat is a perfect use for any old bananas you have sitting on the counter.
+</p>
+```
+
+This paragraph could be targeted with the selector `.description`.
+
+```css
+.description {
+  font-size: 18px;
+}
+```
+
+Class selectors are written with a dot `.` and the name of the class. So, `.description` selects all
+the elements that have the attribute `class="description"`.
+
+<FlashCard>
+<Prompt>
+
+How would you select all the elements with `class="ingredient"`?
+
+</Prompt>
+<Answer>
+
+`.ingredient`
+
+In a complete CSS rule, it would look like
+
+```css
+.ingredient {
+  color: black;
+}
+```
+
+</Answer>
+</FlashCard>
+
+`id` is an attribute like `class`, but it's only supposed to be used on a single element.
+
+If you have the HTML
+
+```html
+<img id="hero-image" src="banana-bread.jpeg" />
+```
+
+The `id` selector uses the `#` character (pronounced 'hash' or 'pound'), then the id value, so
+`#hero-image`.
+
+```css
+#hero-image {
+  width: 400px;
+  height: 600px;
+}
+```
+
+<FlashCard>
+<Prompt>
+
+What CSS selector would you use to select the second list item?
+
+````html
+<ol>
+  <li id="prep">10 minutes prep time</li>
+  <li id="bake">50 minutes bake time</li>
+</ol>
+```
+
+</Prompt>
+<Answer>
+
+The second list item has the id `"bake"`, so the CSS selector would be `#bake`.
+
+```css
+#bake {
+  color: coral;
+}
+```
+
+</Answer>
+</FlashCard>
+
+## Combining Selectors
+
+With Class and Id selectors, we can select any HTML elements on our page. Add a class or id to the
+HTML elements, then write the selector. That strategy works, but it means that we have to change the
+HTML in order to paint the right target for the CSS.
+
+By combining selectors, we can write more powerful selectors, that require fewer changes to our
+HTML.
+
+### Put them together
+
+You can combine selectors together to select elements that match all the parts. To select all the
+paragraphs with `class="description"`
+
+```css
+p.description
+````
+
+You combine the `p` selector with the `.description` selector by joining them together.
+
+<FlashCard>
+<Prompt>
+
+How would you select a `h3` element with the id `"subheader"`?
+
+</Prompt>
+<Answer>
+
+Join the `h3` and `#subheader` selectors.
+
+`h3#subheader`
+
+In a full rule,
+
+```css
+h3#subheader {
+  font-family: Garamond;
+}
+```
+
+</Answer>
+</FlashCard>
+
+<FlashCard>
+<Prompt>
+
+How would you select the elements with class `"ingredient"` and class `"optional"`?
+
+</Prompt>
+<Answer>
+
+The two class selectors would be `.ingredient` and `.optional`. You can join them together without a
+space to select elements that have both classes.
+
+`.ingredient.optional`
+
+In a full rule,
+
+```css
+.ingredient.optional {
+  font-style: italic;
+}
+```
+
+</Answer>
+</FlashCard>
+
+### Descendant Selector
+
+If you put a space between two selectors, CSS selects the elements inside the first selector that
+also match the second selector.
+
+For instance, `ol li` matches list elements inside an ordered list.
+
+```css
+ol li {
+  font-size: 14px;
+}
+```
+
+<FlashCard>
+<Prompt>
+
+What elements would the selector `.description a` match?
+
+</Prompt>
+<Answer>
+
+`.description a` matches anchor elements inside an element with the class `"description"`.
+
+Here's some HTML showing matching and non-matching elements:
+
+```
+<p class="description">
+  <a href="">This anchor element matches</a>
+  <span>
+    <a href="">And this anchor element matches</a>
+    This text does not match
+  </span>
+</p>
+<a href="">Outside of the 'p', so not a match</a>
+```
+
+</Answer>
+</FlashCard>
+
+### Child Selector
+
+If you want to select HTML elements that are the direct children of another selected element, you
+can use the child selector `>`.
+
+Here's an HTML snippet:
+
+```html
+<p>
+  <a href="recipes.com">More Recipes</a>
+  <ul>
+    <li><a href="">Cheeseburger Soup</a></li>
+    <li><a href="">Chicken Fajitas</a></li>
+    <li><a href="">Okonomiyaki (Cabbage Pancakes)</a></li>
+  </ul>
+</p>
+```
+
+Using the child selector `p > a`, we can select the anchor element
+`<a href="recipes.com">More Recipes</a>`, but not the other links.
+
+The child selector selects only the direct children - not elements further inside.
+
+The descendant selector `p a` would select all the anchors - "More Recipes", "Cheeseburger Soup",
+"Chicken Fajitas", and "Okonomiyaki (Cabbage Pancakes)".
+
+<FlashCard>
+<Prompt>
+
+Given the following HTML, how would you select only the outer list items (not the inner ones for the
+Sauce list)
+
+```html
+<h2>Ingredients</h2>
+<ul class="ingredients">
+  <li>Chicken thighs</li>
+  <li>Green onions</li>
+  <li>
+    Sauce:
+    <ul>
+      <li>Honey</li>
+      <li>Water</li>
+      <li>Soy sauce</li>
+      <li>Garlic</li>
+    </ul>
+  </li>
+  <li>Sesame seeds</li>
+</ul>
+```
+
+</Prompt>
+<Answer>
+
+`.ingredients > li`
+
+If you use `ul li`, or `.ingredients li`, the descendant selector will select all the list
+elements - even the ones for the sauce.
+
+If you use `ul > li`, the Sauce list elements will be selected too - they are direct descendants of
+a matching `ul`, even if it's not the one you meant.
+
+</Answer>
+</FlashCard>
+
+### What happens when there is more than one selector that matches?
+
+For example:
+
+```html
+<p class="description">
+  "Wow" is sure to be the unanimous response from guests after their first bite of this moist herb
+  chicken with garlic sauce.
+</p>
+```
+
+```css
+.description {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+```
+
+Both the selectors `p` and `.description` will match the paragraph. So, which color will the
+paragraph be?
+
+In this case, it'll be blue - `.description` has a higher _specificity_ than `p`, so it gets picked.
+
+If both rules were the same, the last one 'wins':
+
+```css
+p {
+  color: blue;
+}
+p {
+  color: red;
+}
+```
+
+The last one wins, so the color would be `red`.
+
+The rules the browser follows for choosing which selector 'wins' are a little complicated. You can
+read more about them in the
+[MDN Documentation for CSS Cascade and Inheritance](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance).
+
+## Further Reading
+
+There's more to learn about selectors what we've covered here.
+
+For a full list of all the selectors that CSS recognizes, see the
+[MDN Reference on Selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors).
+
+### Recommended Resource: CSS Diner
 
 A lot of staff and students have enjoyed practicing CSS selectors with
 [CSS Diner](https://flukeout.github.io/). For each prompt, you have to figure out the right CSS
 selector to use.
 
 Check it out!
+
+### Recommended Resources: CSS Cascade
+
+To learn more about which CSS rule will apply when there are more than one rule that would match an
+element, check out
+[Amelia Wattenberger's awesome guide to the CSS Cascade](https://wattenberger.com/blog/css-cascade)
