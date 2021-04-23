@@ -1,0 +1,163 @@
+---
+title: 'JavaScript Syntax'
+slug: 'js-syntax'
+contentType: 'TextContent'
+---
+
+# JavaScript Syntax
+
+This is an intro to the basic concepts and syntax of JavaScript.
+
+This page is information-dense. It might be best to scan through it, look at examples and exercises,
+then come back to it when you run into a question.
+
+## Code Comments
+
+It's often helpful for developers to leave notes in the code. Comments are a way to write text that
+_does nothing_.
+
+This is a single-line comment.
+
+```js
+// everything on this line after the two forward slashes is ignored
+```
+
+This is a multi-line comment, between the `/*` and the `*/`.
+
+```js
+/*  anything between the slash+star and the star+slash  is ignored */
+
+/*
+
+It can go for multiple lines
+like this
+and JavaScript will ignore it!
+
+*/
+```
+
+We'll use comments in the course to explain pieces of code.
+
+## Representing Data
+
+The first building block of JavaScript is _data_. Data is the _stuff_ in your program, the nouns,
+the things that you act on.
+
+There are nine types of data in JavaScript.
+
+- Number
+- String
+- Boolean
+- Undefined
+- Null
+- BigInt
+- Symbol
+- Object
+- Function
+
+Apart from mentioning them now, we're going to totally ignore `BigInt` and `Symbol` types in this
+course. We'll also leave Object and Function types for later on, so first lets focus on the basic
+'primitive types'.
+
+### Number
+
+### String
+
+### Boolean
+
+### Undefined and Null
+
+## Variables
+
+Variables are containers for data.
+
+The syntax looks like:
+
+```js
+
+```
+
+You can think of a variable as a label, a nametag, or a box.
+
+## Operators
+
+And statements
+
+### Calling functions
+
+### console.log
+
+### alert
+
+### prompt
+
+### typeof
+
+### Converting between datatypes
+
+parseInt parseFloat toString
+
+## Conditions and if statements
+
+## Objects
+
+### Accessing properties
+
+## Functions
+
+### Writing functions
+
+### Callbacks
+
+## Looping
+
+## Arrays
+
+Aside: 'literal' syntaxes
+
+### Helpful functions and properties we've seen
+
+- querySelector
+- innerHTML
+- setTimeout
+- querySelectorAll
+- addEventListener
+- Math.random
+
+## Recommended Resources
+
+- MDN for comprehensive documentation
+
+## Things we have not covered
+
+- Promises and Async
+- execution context, scope, and globals
+- destructuring assignment
+- arrow functions
+- hoisting
+- regular expressions
+- template literals
+- special characters and escaping
+- switch
+- break and continue
+- for, while, for in, for of
+- errors, throw, try, catch, finally
+- class, new
+
+### Potential Misconception: If vs. When
+
+When we talk informally, sometimes we say things like "if the button is clicked, show the message".
+That can lead to a misconception about how JavaScript's `if` works.
+
+`if` is for checking whether something is true _right now_.
+
+```js
+if (age < 18) {
+  alert('cannot buy movie ticket');
+}
+```
+
+The code will not run again on its own if `age` changes.
+
+To take some action when something happens, we use `addEventListener` to set up our response to the
+_event_. Run this code _when_ the event happens.
