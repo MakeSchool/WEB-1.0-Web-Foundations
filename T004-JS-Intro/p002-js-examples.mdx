@@ -39,9 +39,8 @@ This will show an alert with the message `Hi there`.
 Concepts:
 
 - querySelector
-- innerHTML
+- innerHTML and innerText
 - addEventListener
-- setTimeout
 - variable
 - data types
 - conditions, if, equality
@@ -233,12 +232,12 @@ button.addEventListener('click', function () {
   variable)
 
 ```html
-<button>Click to let the monster eat your list items</button>
+<button>Click to grow the garden</button>
 <ul>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>A carrot seed</li>
+  <li>A tangerine seed</li>
+  <li>A strawberry seed</li>
+  <li>A peach seed</li>
 </ul>
 ```
 
@@ -246,9 +245,31 @@ button.addEventListener('click', function () {
 var button = document.querySelector('button');
 button.addEventListener('click', function () {
   var items = document.querySelectorAll('li');
+  items.forEach(function (item) {
+    item.innerText += ' is fully grown!';
+  });
 });
 ```
 
-- Change the color on a timer: (setTimeout, querySelector, style="color: something")
-
 - Change all the list elements text, one by one, on click (variable, querySelector, event listener)
+
+```html
+<button>Click, and the monster will eat a list item</button>
+<ul>
+  <li>A crunchy carrot</li>
+  <li>A tasty tangerine</li>
+  <li>A sweet strawberry</li>
+  <li>A perfect peach</li>
+</ul>
+```
+
+```js
+var button = document.querySelector('button');
+var indexToEat = 0;
+button.addEventListener('click', function () {
+  var items = document.querySelectorAll('li');
+  var snack = items[indexToEat];
+  snack.innerText = 'The monster ate it!';
+  indexToEat = indexToEat + 1;
+});
+```
