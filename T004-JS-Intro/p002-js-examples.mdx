@@ -4,6 +4,8 @@ slug: 'js-examples'
 contentType: 'TextContent'
 ---
 
+import JsDemo from '../JsDemo';
+
 # JavaScript Examples
 
 This page has JavaScript snippets with explanations for what they're doing.
@@ -29,6 +31,10 @@ alert('Hi there');
 This will show an alert with the message `Hi there`.
 
 ### Replit
+
+When there's an embedded Repl, you can run the code by clicking the green play button.
+
+## Code examples
 
 - Repls to click run
 - Examples to run in the console
@@ -253,6 +259,8 @@ button.addEventListener('click', function () {
 
 - Change all the list elements text, one by one, on click (variable, querySelector, event listener)
 
+<JsDemo>
+
 ```html
 <button>Click, and the monster will eat a list item</button>
 <ul>
@@ -273,3 +281,5 @@ button.addEventListener('click', function () {
   indexToEat = indexToEat + 1;
 });
 ```
+
+</JsDemo>
