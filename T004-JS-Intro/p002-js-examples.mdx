@@ -1,18 +1,34 @@
 ---
-title: 'Js Examples'
+title: 'JavaScript Examples'
 slug: 'js-examples'
 contentType: 'TextContent'
 ---
 
-# Js Examples
+# JavaScript Examples
 
 This page has JavaScript snippets with explanations for what they're doing.
 
 Try to read them, identify the pieces of syntax and how they work.
 
-## First, some JavaScript examples
+## Where can we run JavaScript?
 
-Kinds of examples:
+### The Developer Console
+
+If you're using a computer with a keyboard, you can use the keyboard shortcut Shift + ⌘ + J (on
+macOS) or Shift + CTRL + J (on Windows/Linux) to open the console.
+
+You can copy and paste snippets of JavaScript into the console and press Return or Enter to run
+them.
+
+Practice now with the first example:
+
+```js
+alert('Hi there');
+```
+
+This will show an alert with the message `Hi there`.
+
+### Replit
 
 - Repls to click run
 - Examples to run in the console
@@ -34,15 +50,205 @@ Concepts:
 
 Series of examples:
 
-- alert (alert)
-- greeting via prompt (prompt, alert)
-- greeting in console (prompt, console.log)
-- Hide text instantly (querySelector, Element.remove)
+alert
+
+```js
+alert('Hi there!');
+```
+
+greeting via prompt (prompt, alert)
+
+```js
+var name = prompt('What is your name?');
+alert('Hi, ' + name + "it's nice to meet you!");
+```
+
+greeting in console (prompt, console.log)
+
+```js
+var name = prompt('What is your name?');
+console.log('Hi, ' + name + ', nice to see you in the console');
+```
+
+- alert some math
+
+```js
+alert('2 + 2 is ...');
+alert(2 + 2);
+```
+
+- log some math
+
+```js
+console.log('5 * 5 is ...');
+console.log(5 * 5);
+```
+
+- convert some input to a number to do math on it
+
+```js
+var response = prompt('Enter a number to multiply by one million:');
+var number = parseInt(response);
+var timesAMillion = number * 1000000;
+alert('The answer is: ' + timesAMillion);
+```
+
+- Hide element after alert (querySelector, Element.remove)
+
+```js
+alert("I'm going to hide the text!");
+var text = document.querySelector('#text-to-remove');
+text.remove();
+```
+
+- Hide element after confirm (condition)
+
+```js
+var shouldRemove = confirm('Should I remove the element?');
+if (shouldRemove) {
+  var text = document.querySelector('#text-to-remove');
+  text.remove();
+}
+```
+
+- Hide element after prompt (condition)
+
+```js
+var response = prompt('Type "yes" to remove the element.');
+if (response.toLowerCase() === 'yes') {
+  var text = document.querySelector('#text-to-remove');
+  text.remove();
+}
+```
+
+- alert when button clicked
+
+```html
+<button>Click this to show a message!</button>
+```
+
+```js
+var button = document.querySelector('button');
+button.addEventListener(function () {
+  alert('Hi there!');
+});
+```
+
 - Hide text on click (event listener, querySelector, Element.remove)
-- Reveal the text on click (event listener, querySelector, innerHTML)
-- Reveal text on click (event listener, querySelector, style = "display: initial")
+
+```html
+<button>Click this button to make it disappear</button>
+```
+
+```js
+var button = document.querySelector('button');
+button.addEventListener('click', function () {
+  button.remove();
+});
+```
+
 - Change the color on click: (event listener, querySelector, style="color: something")
-- Change the color on a timer: (setTimeout, querySelector, style="color: something")
+
+```html
+<button>Click this button to turn it green</button>
+```
+
+```js
+var button = document.querySelector('button');
+button.addEventListener('click', function () {
+  button.style.color = 'green';
+});
+```
+
+- Reveal the text on click (event listener, querySelector, innerHTML)
+
+```html
+<button>Click this button to show the text</button>
+<p></p>
+```
+
+```js
+var button = document.querySelector('button');
+var paragraph = document.querySelector('p');
+button.addEventListener('click', function () {
+  p.innerText = 'Congratulations, you clicked the button!';
+});
+```
+
+- Add list items on click
+
+```html
+<button>Add an item to the list</button>
+<ol>
+  <li>Initial list item</li>
+</ol>
+```
+
+```js
+var button = document.querySelector('button');
+var list = document.querySelector('ol');
+button.addEventListener('click', function () {
+  list.innerHTML += '<li>Added a list item!</li>';
+});
+```
+
+- add prompt response to list when button clicked
+
+```html
+<button>Click to enter a list item</button>
+<ol>
+  <li>Initial list item</li>
+</ol>
+```
+
+```js
+var button = document.querySelector('button');
+var list = document.querySelector('ol');
+button.addEventListener('click', function () {
+  var response = prompt('What should we add to the list?');
+  var item = '<li>' + response + '</li>';
+  list.innerHTML += item;
+});
+```
+
+- add input to list on button click
+
+```html
+<span>Add a list item:</span><input type="text" />
+<button>Click here to add to the list</button>
+<ol></ol>
+```
+
+```js
+var input = document.querySelector('input');
+var button = document.querySelector('button');
+var list = document.querySelector('ol');
+button.addEventListener('click', function () {
+  var item = "<li>" + input.value + "</li>;
+  list.innerHTML += item;
+});
+```
+
 - Change all the list elements text on click: (eventListener, querySelectorAll, loop (forEach?),
   variable)
+
+```html
+<button>Click to let the monster eat your list items</button>
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+```
+
+```js
+var button = document.querySelector('button');
+button.addEventListener('click', function () {
+  var items = document.querySelectorAll('li');
+});
+```
+
+- Change the color on a timer: (setTimeout, querySelector, style="color: something")
+
 - Change all the list elements text, one by one, on click (variable, querySelector, event listener)
