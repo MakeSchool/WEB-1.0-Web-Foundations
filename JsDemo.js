@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 /*
   Renders child code blocks as children and as an embedded iframe.
@@ -25,13 +25,15 @@ const makeSrcString = nodes =>
     })
     .join('\n\n');
 
-const JsDemo = ({children}) => {
+const JsDemo = ({children, defer = false}) => {
+  let [run, setRun] = useState(!defer);
   const srcString = makeSrcString(children);
   return (
     <div>
       <div>{children}</div>
+      <button onClick={() => setRun(true)}>Run</button>
       <div>
-        <iframe srcDoc={srcString}></iframe>
+        <iframe srcDoc={run ? srcString : 'Click run to see the result'}></iframe>
       </div>
     </div>
   );

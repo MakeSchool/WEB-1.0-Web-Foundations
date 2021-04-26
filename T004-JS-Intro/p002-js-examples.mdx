@@ -12,28 +12,6 @@ This page has JavaScript snippets with explanations for what they're doing.
 
 Try to read them, identify the pieces of syntax and how they work.
 
-## Where can we run JavaScript?
-
-### The Developer Console
-
-If you're using a computer with a keyboard, you can use the keyboard shortcut Shift + ⌘ + J (on
-macOS) or Shift + CTRL + J (on Windows/Linux) to open the console.
-
-You can copy and paste snippets of JavaScript into the console and press Return or Enter to run
-them.
-
-Practice now with the first example:
-
-```js
-alert('Hi there');
-```
-
-This will show an alert with the message `Hi there`.
-
-### Replit
-
-When there's an embedded Repl, you can run the code by clicking the green play button.
-
 ## Code examples
 
 - Repls to click run
@@ -259,7 +237,7 @@ button.addEventListener('click', function () {
 
 - Change all the list elements text, one by one, on click (variable, querySelector, event listener)
 
-<JsDemo>
+<JsDemo defer>
 
 ```html
 <button>Click, and the monster will eat a list item</button>
@@ -272,6 +250,7 @@ button.addEventListener('click', function () {
 ```
 
 ```js
+console.log('hello');
 var button = document.querySelector('button');
 var indexToEat = 0;
 button.addEventListener('click', function () {
