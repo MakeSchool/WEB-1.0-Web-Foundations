@@ -11,6 +11,10 @@ This is an intro to the basic concepts and syntax of JavaScript.
 This page is information-dense. It might be best to scan through it, look at examples and exercises,
 then come back to it when you run into a question.
 
+There's lots of links to the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/MDN/About) for
+further reading. They're a trusted source of documentation and reference materials for web
+technologies.
+
 ## Code Comments
 
 It's often helpful for developers to leave notes in the code. Comments are a way to write text that
@@ -55,47 +59,468 @@ There are nine types of data in JavaScript.
 - Object
 - Function
 
-Apart from mentioning them now, we're going to totally ignore `BigInt` and `Symbol` types in this
-course. We'll also leave Object and Function types for later on, so first lets focus on the basic
-'primitive types'.
+Apart from mentioning them now, this course will ignore `BigInt` and `Symbol` types. We'll also
+leave Object and Function types for later on, so first lets focus on the basic 'primitive types'.
 
 ### Number
 
+Numbers can go right into code.
+
+```
+3
+10
+-43
+90000
+6.832
+```
+
+Sometimes, you have to be careful about fractional numbers, because they don't always work how you
+expect them to.
+
+<Info>
+
+In some other programming languages, there are different types of numbers (often one or more integer
+and floating point types). Historically, JavaScript has only had one type of number, which uses a
+double-precision floating point representation. (As of 2019-2020, there's also BigInt, for correctly
+operating on large integers). If you've used a language with integer and floating point types,
+JavaScript just has floats.
+
+Read more about the JavaScript
+[Number on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+</Info>
+
 ### String
+
+Programs need a way to distinguish between the program code and text that the program manipulates.
+
+In the examples, you see code like:
+
+```js
+alert('Hello, world!');
+```
+
+`Hello, world!` is the message that shows in the alert.
+
+In JavaScript, text is represented as a String. You can type a string into your program by
+surrounding the text with quotes:
+
+```js
+"This is a string."
+'It's text - JavaScript won't try to run it as code.'
+"You can use single or double quotes, so long as they match at the start and end."
+"If you want a quote mark in your string, you'll need to use the other kind on the outside"
+`You can also use backticks! They work a little differently, as we'll see later.`
+```
 
 ### Boolean
 
+```
+true
+false
+```
+
+`true` and `false` are the two Boolean values in JavaScript.
+
+Programs often need to decide what to do based on some condition. `true` and `false` are the way a
+program can keep track of what it needs to make decisions.
+
+We'll learn more about logic, conditionals, and `if` statements later on. That's when we'll see how
+to use `true` and `false` values to make decisions in programs.
+
 ### Undefined and Null
+
+Programs sometimes need a way to say "there's nothing here". JavaScript has two ways to represent
+something that doesn't exist.
+
+`undefined` is the default value that JavaScript uses when a value hasn't been set.
+
+`null` is usually the value that programmers use to represent 'empty' or 'nothing'.
+
+These tend to be less useful than other values, but you'll see them show up in lots of places, so it
+helps to be able to recognize them.
+
+## Operators, expressions, and statements
+
+Data and variables are way more useful if we can do things with them.
+
+**Operators** let us do things with data.
+
+### Arithmetic Operators
+
+Some of the simplest operators are the Arithmetic operators. They let us do basic math with numbers.
+
+```
+5 + 10
+6 * 6
+12 - 2
+100 / 10
+```
+
+- `+` for addition
+- `*` for multiplication
+- `-` for subtraction
+- `/` for division
+
+Try evaluating each of these to check that they work like they do in math class.
+
+There's two other math arithmetic operators, `**` for exponentiation and `%` for modulo.
+
+They might be less familiar, but they come in handy.
+
+`**` is exponentiation, which raises a number to a power.
+
+```
+// 2 raised to the power of 3, equals (2 * 2 * 2), equals 8
+2 ** 3 // 8
+
+// 10 raised to the power of 5, (10 * 10 * 10 * 10 * 10), 100000
+10 ** 5 // 10000
+```
+
+`%` is modulo, which calculates the remainder.
+
+```
+10 % 5 // 0
+11 % 5 // 1
+12 % 5 // 2
+13 % 5 // 3
+14 % 5 // 4
+15 % 5 // 0
+16 % 5 // 1
+```
+
+It's the leftover part after dividing evenly.
+
+```
+16 % 2 // 0
+17 % 2 // 1
+18 % 2 // 0
+```
+
+<FlashCard prompt="What is the result of (12 % 10) ?" answer="2" />
+
+### String operators
+
+The `+` operator doesn't just work on numbers - it also joins strings together.
+
+```
+"Hello " + "world" // "Hello world"
+```
+
+You have to be careful about spaces. `+` won't add any extra spaces to your strings, so you can end
+up with a surprising result.
+
+```
+"Hello" + "world" // "Helloworld"
+```
+
+### Grouping and evaluation order
+
+It's often useful to group parts of an expression together.
+
+```js
+(5 + 4) * 10; // 90
+```
+
+Parentheses `(` and `)` make a group into a unit that stands on its own.
+
+Without the parentheses, that code would have a different result.
+
+```js
+5 + 4 * 10; // 45
+```
+
+That means that JavaScript is evaluating the `*` before the `+`. JavaScript has rules for deciding
+which operators happen first. You don't need to memorize those rules. If you are confused about the
+order things are happening, you can use parens `()` to group parts of the expression to see what
+changes, or refer to the
+[MDN documentation on Operator Precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence).
+
+JavaScript also has other operators that we didn't cover here. The
+[MDN Operator Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
+has a list of all the operators and their descriptions.
 
 ## Variables
 
 Variables are containers for data.
 
-The syntax looks like:
-
 ```js
-
+let message = 'Hi there, how are you?';
 ```
 
-You can think of a variable as a label, a nametag, or a box.
+You can think of a variable as a label, a nametag, or a box. They hold onto the value, so the
+program can use it later.
 
-## Operators
+To use the value, you use the name of the variable:
 
-And statements
+```js
+let message = 'Hi there, how are you?';
+alert(message);
+console.log(message);
+alert(message);
+```
 
-### Calling functions
+Variables can hold one value of any data type.
 
-### console.log
+```js
+let powerLevel = 11;
+let lovesJavaScript = true;
+let nothing = null;
+```
+
+Let's look at the syntax for creating a variable more closely:
+
+```
+let powerLevel = 11
+```
+
+- It starts with the `let` keyword
+- Then the name of the variable
+- Then `=`
+- Finally, the value to assign
+
+If, later on, we want to change the value in the box, we can reassign the variable.
+
+```
+powerLevel = 12
+```
+
+We leave off the `let` keyword when we reassign an existing variable.
+
+To use the value of the variable, we use its name.
+
+```
+powerLevel
+```
+
+We can use a variable anywhere we would use another value. For example, in an expression:
+
+```
+let powerLevel = 12
+powerLevel * 10 // 120
+powerLevel + 6 // 18
+```
+
+Using the variable doesn't change its value, but we can change the value with reassignment.
+
+```
+let powerLevel = 10
+console.log(powerLevel)
+
+powerLevel = powerLevel + 1
+console.log(powerLevel)
+
+powerLevel = powerLevel + 2
+console.log(powerLevel)
+```
+
+<Info>
+
+There's actually three different keywords for creating a variable in JavaScript: `var`, `let`, and
+`const`. They have slightly different rules for _scope_, which decides which names are defined at
+different points in a program.
+
+You may see all three keywords.
+
+- `const` variables can't be reassigned. This is helpful for things that you don't want to
+  accidentally change later in the program.
+- `let` and `var` are similar, but have some key differences, especially _hoisting_ and _block
+  scope_.
+
+For now, you can just use `let` and ignore the differences. After you've written plenty of programs
+using variables and functions, you should learn about scope and the differences between these
+keywords.
+
+</Info>
+
+## Calling functions
+
+Operators aren't the only thing that let us do stuff with data. _Functions_ can do more things with
+data, like show an message with `alert` or `console.log`, or get input from the user with `prompt`.
+
+Let's look at some of the built-in functions first, so you can see how to use functions. Later on,
+you'll see how to make your own functions that do what you want.
 
 ### alert
 
-### prompt
+`alert` is a function that shows a message to a user.
+
+You use alert like this:
+
+```js
+alert('This is the message');
+```
+
+You _pass in_ a string value to the function `alert`, inside the parentheses.
+
+```js
+let message = 'This string will be kept in a variable';
+alert(message);
+```
+
+### Function call syntax
+
+That's the pattern for using any function. You use the function's name (like `alert`) then
+parentheses, with whatever data the function needs.
+
+```js
+name(data);
+```
+
+Some functions don't need any data. We can use empty parentheses in that case:
+
+```js
+noDataNeeded();
+```
+
+Other functions need more data. For example, a function `add` that adds two numbers would need both
+numbers.
+
+```js
+add(5, 10);
+```
+
+As you can see, we separate the two pieces of data with a comma: `,`.
+
+Some function vocabulary:
+
+- the data we pass to a function is called the _arguments_
+- we call using a function "running", "invoking", or "calling" the function
+
+### console.log
+
+The alert box is sometimes annoying to users. Developers use the `console.log` function to show a
+message in the _Developer Console_, where it's less obtrusive.
+
+```js
+console.log('This log message only shows in the developer console');
+```
+
+Like `alert`, it takes in a message argument, so that it knows what to display.
+
+### prompt and confirm
+
+`prompt` is a function that shows a message and gets input from the user:
+
+```js
+prompt("What's your name?");
+```
+
+`prompt` returns what the user types in as a string. If you want to use that string later, you can
+store it as a variable:
+
+```js
+let response = prompt("What's your name?");
+alert('Nice to meet you, ' + response);
+```
+
+`confirm` is like prompt, only instead of a text box, it shows buttons for 'Ok' and 'Cancel'.
+
+```js
+confirm('Really delete the message?');
+```
+
+It also takes in a string as arguments. Instead of returning a string, it returns a boolean: `true`
+if the user clicked "Ok", and `false` if the user clicked `Cancel`.
+
+```js
+let shouldDelete = confirm('Really delete?');
+alert('You answered: ' + shouldDelete);
+```
+
+`prompt` and `confirm` are functions that give back a value. The data you get from calling a
+function is called a _return value_. Later on, you'll use the `return` keyword to write a function
+that gives back a value.
+
+The vocab to know is that when a function 'sends back' a value, we say it _returns_ the value.
+`prompt` is a function that returns a string and `confirm` is a function that returns a boolean.
 
 ### typeof
 
+If you have a piece of data, and you want to know what datatype it is, you can use `typeof`.
+
+`typeof` returns a string with the name of the type of data.
+
+```
+typeof(100) // 'number'
+typeof("Hello") // 'string'
+typeof(true) // 'boolean'
+typeof(undefined) // 'undefined'
+typeof(alert) // 'function'
+```
+
+<Info>
+
+There's a weird gotcha.
+
+```
+typeof(null) // 'object'
+```
+
+JavaScript isn't perfect. The language maintainers discussed fixing this, but it turns out that
+there's some real-world code that would break if `typeof(null)` were fixed to return `'null'`.
+
+</Info>
+
+<Info>
+
+`typeof` is technically an operator, not a function. It works whether or not you use parentheses.
+
+```
+typeof 7 // 'number'
+```
+
+You don't need to know this, but you might see it in examples online.
+
+</Info>
+
 ### Converting between datatypes
 
-parseInt parseFloat toString
+Sometimes we have a string, but want a number, or the other way around.
+
+```js
+let response = prompt('How many one-dollar books would you like to order?');
+let cost = response + 15;
+alert(cost + ' dollars with shipping.');
+```
+
+If you entered 10, you would expect the alert message to be `25 dollars with shipping`. Because the
+response is a String, the alert message will instead be `1015 dollars with shipping`.
+
+You need to turn the String `"10"` into a Number. To do that, you can use `parseInt`. 'Parse' means
+'take apart' or 'analyze'. In this case, `parseInt` means 'turn this string into a number'.
+
+```js
+let response = prompt('How many one-dollar books would you like to order?');
+let booksCount = parseInt(response);
+let cost = booksCount + 15;
+alert(cost + ' dollars with shipping.');
+```
+
+Now the correct message will display.
+
+`parseInt` is a function that takes a string argument and returns a number.
+
+In case there's a fractional number, like `"12.8"`, you can use `parseFloat`.
+
+```js
+let response = prompt('How many miles are you traveling?');
+let miles = parseFloat(response);
+let km = miles * 2.45;
+alert("That's " + km + ' kilometers!');
+```
+
+To go the other direction, you can use `toString`. It's a little different - you put it on the end
+of the number with a dot, like:
+
+```js
+let miles = 152;
+console.log(miles.toString());
+```
+
+JavaScript will automatically convert numbers to strings when you try to add a number to a string
+with `+`, or if you use `console.log`, so `toString` won't be as useful for now.
 
 ## Conditions and if statements
 
@@ -130,7 +555,6 @@ Aside: 'literal' syntaxes
 
 ## Things we have not covered
 
-- Promises and Async
 - execution context, scope, and globals
 - destructuring assignment
 - arrow functions
@@ -142,7 +566,45 @@ Aside: 'literal' syntaxes
 - break and continue
 - for, while, for in, for of
 - errors, throw, try, catch, finally
+- Error
+- Map and Set
+- get and set
+- JSON
+- Date
+- Promises and Async
 - class, new
+
+### Aside: Semicolons
+
+Js uses semicolons to end a statement.
+
+```js
+var x = 10;
+```
+
+The `;` means the statement is done.
+
+Since people sometimes forget the semicolons, JavaScript will automatically add them at the end of
+each line when it runs the code.
+
+So, this is allowed:
+
+```
+var x = 10
+alert(x * 10)
+```
+
+and it turns into
+
+```js
+var x = 10;
+alert(x * 10);
+```
+
+Some people like to write code without semicolons, some people like to write code with semicolons.
+
+There's a couple situations where there's a difference, but usually you can choose which style you
+like best.
 
 ### Potential Misconception: If vs. When
 
