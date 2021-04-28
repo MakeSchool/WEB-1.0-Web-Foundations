@@ -607,9 +607,103 @@ You can read more about the
 
 ## Objects
 
+So far, the data types you've seen are strings, numbers, booleans (and null and undefined).
+
+Objects are more complicated. An object bundles up data into a larger unit.
+
+Let's look at an object:
+
+```js
+let snack = {
+  name: 'crunchy carrot',
+  price: 0.25,
+};
+```
+
+Between the curly braces `{}`, there are pairs of _keys_ and _values_. The keys ('name' and 'price')
+are names you can use to get the value from the object. The values ('crunchy carrot' and '0.25') are
+data we're keeping in the object.
+
+You use the `{` and `}` to start and end the object. There's a colon `:` between the key and value,
+and there's a comma `,` after each pair of key and value.
+
+A pair of key and value is called a _property_ of an object.
+
 ### Accessing properties
 
+You can use a `.` to get the name or price out of the `snack` object.
+
+```
+snack.name // 'crunchy carrot'
+snack.price // 0.25
+```
+
+The `.` is called a 'property accessor', because you use it to access the object's properties.
+
+#### Bracket Notation
+
+You can also access properties using the name, as a string, in square brackets.
+
+```
+snack['name'] // 'crunchy carrot'
+snack['price'] // 0.25
+```
+
+This is a little more to type, but it can come in handy in some situations, like if you have the
+name of the property as a variable.
+
+```js
+let key = prompt("Enter 'name' or 'price' to see that property");
+let value = snack[key];
+alert('The ' + key + ' of the snack is ' + value);
+```
+
+#### Updating properties
+
+To change the value in a
+
+#### Accessing properties that don't exist
+
+If you try to access a property that doesn't exist, you'll get `undefined`.
+
+```
+snack.color // undefined
+```
+
+JavaScript won't try to guess what the value should be, it just says "I don't know!"
+
+### Built-in Objects
+
+You've seen the `.` before! Every time you see `console.log` or `document.querySelector`, that's an
+example of accessing an object property. In this case, `console` is an object, and you get the 'log'
+property using the `.` accessor.
+
+JavaScript in the browser has a lot of built-in functionality. Lots of the built-in functionality
+uses objects. For instance, when we use `document.querySelector` to find an element on the page, we
+get back an object. It's a big, complicated object, with tons of properties, but it's still just an
+object.
+
+The same is true for lots of other built-ins that the JavaScript language and the browser give you.
+Big objects, with lots of properties.
+
 ## Functions
+
+You've seen functions like `alert`, `prompt`, `console.log`, and `document.querySelector` before. To
+review, calling a function looks like:
+
+```js
+nameOfFunction(arguments);
+```
+
+So, for the functions you've seen:
+
+```js
+alert('Check the developer console');
+console.log("The password is 'be a good friend'");
+prompt("What's the password?");
+```
+
+Now, you'll learn to write your own functions that do what you decide.
 
 ### Writing functions
 
@@ -621,39 +715,14 @@ You can read more about the
 
 Aside: 'literal' syntaxes
 
-### Helpful functions and properties we've seen
+### Helpful functions and properties to know
 
 - querySelector
+- querySelectorAll
 - innerHTML
 - setTimeout
-- querySelectorAll
 - addEventListener
 - Math.random
-
-## Recommended Resources
-
-- MDN for comprehensive documentation
-
-## Things we have not covered
-
-- execution context, scope, and globals
-- destructuring assignment
-- arrow functions
-- hoisting
-- regular expressions
-- template literals
-- special characters and escaping
-- switch
-- break and continue
-- for, while, for in, for of
-- errors, throw, try, catch, finally
-- Error
-- Map and Set
-- get and set
-- JSON
-- Date
-- Promises and Async
-- class, new
 
 ### Aside: Semicolons
 
@@ -704,3 +773,28 @@ The code will not run again on its own if `age` changes.
 
 To take some action when something happens, we use `addEventListener` to set up our response to the
 _event_. Run this code _when_ the event happens.
+
+## Recommended Resources
+
+- MDN for comprehensive documentation
+
+## Things we have not covered
+
+- execution context, scope, and globals
+- destructuring assignment
+- arrow functions
+- hoisting
+- regular expressions
+- template literals
+- special characters and escaping
+- switch
+- break and continue
+- for, while, for in, for of
+- errors, throw, try, catch, finally
+- Error
+- Map and Set
+- get and set
+- JSON
+- Date
+- Promises and Async
+- class, new
