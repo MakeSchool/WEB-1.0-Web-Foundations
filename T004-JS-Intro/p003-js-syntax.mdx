@@ -524,6 +524,87 @@ with `+`, or if you use `console.log`, so `toString` won't be as useful for now.
 
 ## Conditions and if statements
 
+Programs do different things based on conditions. JavaScript has a few ways to control the flow of
+the program.
+
+`if` statements check if a condition is true, then run some code if it is.
+
+```js
+let response = prompt('Should we go ahead?');
+if (response === 'yes') {
+  alert("Let's go!");
+}
+```
+
+The `alert` will only happen if the user typed in "yes" at the prompt.
+
+Let's break down this snippet. First, we're storing the reponse from `prompt` in a variable.
+
+```js
+let response = prompt('Should we go ahead?');
+```
+
+The next line has two new tools: the `if` statement, and the `===` operator.
+
+The equality operator `===` checks if two values are the same. If they are, the result is `true`. If
+not, the result is `false`. We can check it on its own:
+
+The `if` statement has this form:
+
+```
+if ( condition to check ) {
+  code to run if condition is true
+}
+```
+
+### Comparison operators
+
+Let's look at `===` more closely.
+
+```
+10 === 10 // true
+"fish" === "fish" // true
+5 === 10 // false
+"dog" === "fish" // false
+```
+
+It works with variables too:
+
+```
+let name = "Ahmed"
+name === "Ahmed" // true
+"Mariam" === name // false
+```
+
+<Info>
+
+It's sometimes easy to mix up `=` and `===`. `=` is for _assignment, it stores a value in a
+variable. `===` is for \_comparison_, and it's for checking equality.
+
+There's also `==`. It's a comparison operator like `===`, but it does type conversion first, which
+can be confusing.
+
+```js
+7 === '7'; // false
+7 == '7'; // true
+```
+
+It's normally recommended to use `===` for equality checking.
+
+</Info>
+
+There's other comparison operators like `===`. Depending on the condition you want to express, they
+can each be useful.
+
+- `!==` is the 'not equals' operator. It gives the opposite result as `===`.
+- `>` is the 'greater than' operator.
+- `<` is the 'less than' operator.
+- `>=` is 'greater than or equal'
+- `<=` is 'less than or equal'
+
+You can read more about the
+[Comparison Operators on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#comparison_operators)
+
 ## Objects
 
 ### Accessing properties

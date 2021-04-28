@@ -42,14 +42,14 @@ alert('Hi there!');
 greeting via prompt (prompt, alert)
 
 ```js
-var name = prompt('What is your name?');
+let name = prompt('What is your name?');
 alert('Hi, ' + name + "it's nice to meet you!");
 ```
 
 greeting in console (prompt, console.log)
 
 ```js
-var name = prompt('What is your name?');
+let name = prompt('What is your name?');
 console.log('Hi, ' + name + ', nice to see you in the console');
 ```
 
@@ -70,9 +70,9 @@ console.log(5 * 5);
 - convert some input to a number to do math on it
 
 ```js
-var response = prompt('Enter a number to multiply by one million:');
-var number = parseInt(response);
-var timesAMillion = number * 1000000;
+let response = prompt('Enter a number to multiply by one million:');
+let number = parseInt(response);
+let timesAMillion = number * 1000000;
 alert('The answer is: ' + timesAMillion);
 ```
 
@@ -80,16 +80,16 @@ alert('The answer is: ' + timesAMillion);
 
 ```js
 alert("I'm going to hide the text!");
-var text = document.querySelector('#text-to-remove');
+let text = document.querySelector('#text-to-remove');
 text.remove();
 ```
 
 - Hide element after confirm (condition)
 
 ```js
-var shouldRemove = confirm('Should I remove the element?');
+let shouldRemove = confirm('Should I remove the element?');
 if (shouldRemove) {
-  var text = document.querySelector('#text-to-remove');
+  let text = document.querySelector('#text-to-remove');
   text.remove();
 }
 ```
@@ -97,9 +97,9 @@ if (shouldRemove) {
 - Hide element after prompt (condition)
 
 ```js
-var response = prompt('Type "yes" to remove the element.');
+let response = prompt('Type "yes" to remove the element.');
 if (response.toLowerCase() === 'yes') {
-  var text = document.querySelector('#text-to-remove');
+  let text = document.querySelector('#text-to-remove');
   text.remove();
 }
 ```
@@ -111,7 +111,7 @@ if (response.toLowerCase() === 'yes') {
 ```
 
 ```js
-var button = document.querySelector('button');
+let button = document.querySelector('button');
 button.addEventListener(function () {
   alert('Hi there!');
 });
@@ -124,7 +124,7 @@ button.addEventListener(function () {
 ```
 
 ```js
-var button = document.querySelector('button');
+let button = document.querySelector('button');
 button.addEventListener('click', function () {
   button.remove();
 });
@@ -137,7 +137,7 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
+let button = document.querySelector('button');
 button.addEventListener('click', function () {
   button.style.color = 'green';
 });
@@ -151,8 +151,8 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
-var paragraph = document.querySelector('p');
+let button = document.querySelector('button');
+let paragraph = document.querySelector('p');
 button.addEventListener('click', function () {
   p.innerText = 'Congratulations, you clicked the button!';
 });
@@ -168,8 +168,8 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
-var list = document.querySelector('ol');
+let button = document.querySelector('button');
+let list = document.querySelector('ol');
 button.addEventListener('click', function () {
   list.innerHTML += '<li>Added a list item!</li>';
 });
@@ -185,11 +185,11 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
-var list = document.querySelector('ol');
+let button = document.querySelector('button');
+let list = document.querySelector('ol');
 button.addEventListener('click', function () {
-  var response = prompt('What should we add to the list?');
-  var item = '<li>' + response + '</li>';
+  let response = prompt('What should we add to the list?');
+  let item = '<li>' + response + '</li>';
   list.innerHTML += item;
 });
 ```
@@ -203,11 +203,11 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var input = document.querySelector('input');
-var button = document.querySelector('button');
-var list = document.querySelector('ol');
+let input = document.querySelector('input');
+let button = document.querySelector('button');
+let list = document.querySelector('ol');
 button.addEventListener('click', function () {
-  var item = "<li>" + input.value + "</li>;
+  let item = "<li>" + input.value + "</li>;
   list.innerHTML += item;
 });
 ```
@@ -226,9 +226,9 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
+let button = document.querySelector('button');
 button.addEventListener('click', function () {
-  var items = document.querySelectorAll('li');
+  let items = document.querySelectorAll('li');
   items.forEach(function (item) {
     item.innerText += ' is fully grown!';
   });
@@ -250,11 +250,11 @@ button.addEventListener('click', function () {
 ```
 
 ```js
-var button = document.querySelector('button');
-var indexToEat = 0;
+let button = document.querySelector('button');
+let indexToEat = 0;
 button.addEventListener('click', function () {
-  var items = document.querySelectorAll('li');
-  var snack = items[indexToEat];
+  let items = document.querySelectorAll('li');
+  let snack = items[indexToEat];
   snack.innerText = 'The monster ate it!';
   indexToEat = indexToEat + 1;
 });
