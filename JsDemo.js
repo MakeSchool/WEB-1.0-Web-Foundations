@@ -27,7 +27,7 @@ const makeSrcString = nodes =>
 
 const JsDemo = ({children, defer = false}) => {
   let [run, setRun] = useState(!defer);
-  const srcString = makeSrcString(children);
+  const srcString = makeSrcString(Array.from(children));
   return (
     <div>
       <div>{children}</div>
