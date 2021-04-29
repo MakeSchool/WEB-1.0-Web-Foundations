@@ -4,6 +4,8 @@ slug: 'js-syntax'
 contentType: 'TextContent'
 ---
 
+import JsDemo from '../JsDemo';
+
 # JavaScript Syntax
 
 This is an intro to the basic concepts and syntax of JavaScript.
@@ -60,7 +62,13 @@ There are nine types of data in JavaScript.
 - Function
 
 Apart from mentioning them now, this course will ignore `BigInt` and `Symbol` types. We'll also
-leave Object and Function types for later on, so first lets focus on the basic 'primitive types'.
+leave Object and Function types for later on, so first let's focus on the five 'primitive types'.
+
+- Number
+- String
+- Boolean
+- Undefined
+- Null
 
 ### Number
 
@@ -85,8 +93,8 @@ double-precision floating point representation. (As of 2019-2020, there's also B
 operating on large integers). If you've used a language with integer and floating point types,
 JavaScript just has floats.
 
-Read more about the JavaScript
-[Number on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
+Read more about the
+[JavaScript Number type on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
 </Info>
 
@@ -100,9 +108,9 @@ In the examples, you see code like:
 alert('Hello, world!');
 ```
 
-`Hello, world!` is the message that shows in the alert.
+`alert` is code. `Hello, world!` is the message that shows in the alert.
 
-In JavaScript, text is represented as a String. You can type a string into your program by
+In JavaScript, text is represented as a _string_. You can type a string into your program by
 surrounding the text with quotes:
 
 ```js
@@ -110,8 +118,11 @@ surrounding the text with quotes:
 'It's text - JavaScript won't try to run it as code.'
 "You can use single or double quotes, so long as they match at the start and end."
 "If you want a quote mark in your string, you'll need to use the other kind on the outside"
-`You can also use backticks! They work a little differently, as we'll see later.`
+`You can also use backticks! They work a little differently, as you'll see later.`
 ```
+
+The name "string" comes from 'a string of characters', since in the computer, the text is
+represented as one character after another.
 
 ### Boolean
 
@@ -125,8 +136,8 @@ false
 Programs often need to decide what to do based on some condition. `true` and `false` are the way a
 program can keep track of what it needs to make decisions.
 
-We'll learn more about logic, conditionals, and `if` statements later on. That's when we'll see how
-to use `true` and `false` values to make decisions in programs.
+You'll learn more about logic, conditionals, and `if` statements later on. That's when you'll see
+how to use `true` and `false` values to make decisions in programs.
 
 ### Undefined and Null
 
@@ -142,7 +153,7 @@ helps to be able to recognize them.
 
 ## Operators, expressions, and statements
 
-Data and variables are way more useful if we can do things with them.
+Data and variables are way more useful if you can do things with them.
 
 **Operators** let us do things with data.
 
@@ -280,21 +291,21 @@ let powerLevel = 11
 - Then `=`
 - Finally, the value to assign
 
-If, later on, we want to change the value in the box, we can reassign the variable.
+If, later on, you want to change the value in the box, you can reassign the variable.
 
 ```
 powerLevel = 12
 ```
 
-We leave off the `let` keyword when we reassign an existing variable.
+You leave off the `let` keyword when you reassign an existing variable.
 
-To use the value of the variable, we use its name.
+To use the value of the variable, you use its name.
 
 ```
 powerLevel
 ```
 
-We can use a variable anywhere we would use another value. For example, in an expression:
+You can use a variable anywhere you would use another value. For example, in an expression:
 
 ```
 let powerLevel = 12
@@ -302,7 +313,7 @@ powerLevel * 10 // 120
 powerLevel + 6 // 18
 ```
 
-Using the variable doesn't change its value, but we can change the value with reassignment.
+Using the variable doesn't change its value, but you can change the value with reassignment.
 
 ```
 let powerLevel = 10
@@ -368,7 +379,7 @@ parentheses, with whatever data the function needs.
 name(data);
 ```
 
-Some functions don't need any data. We can use empty parentheses in that case:
+Some functions don't need any data. You can use empty parentheses in that case:
 
 ```js
 noDataNeeded();
@@ -381,12 +392,12 @@ numbers.
 add(5, 10);
 ```
 
-As you can see, we separate the two pieces of data with a comma: `,`.
+As you can see, two pieces of data are separated with a comma: `,`.
 
 Some function vocabulary:
 
-- the data we pass to a function is called the _arguments_
-- we call using a function "running", "invoking", or "calling" the function
+- The data passed to a function is called the _arguments_
+- We call using a function "running", "invoking", or "calling" the function
 
 ### console.log
 
@@ -660,7 +671,22 @@ alert('The ' + key + ' of the snack is ' + value);
 
 #### Updating properties
 
-To change the value in a
+To set the value of a property in an object, you can an accessor and the assignment operator `=`,
+like you would for a variable.
+
+Using the dot accessor:
+
+```js
+snack.price = 0.99;
+snack.rating = '⭐⭐️⭐️⭐️️';
+```
+
+Or square brackets:
+
+```js
+snack['price'] = 0.99;
+snack['rating'] = '⭐⭐️⭐️⭐';
+```
 
 #### Accessing properties that don't exist
 
@@ -707,24 +733,446 @@ Now, you'll learn to write your own functions that do what you decide.
 
 ### Writing functions
 
+Here's an example of creating a new function called `fancyLog`.
+
+```js
+function fancyLog(message) {
+  console.log('>>>>>>>');
+  console.log(message);
+  console.log('>>>>>>>');
+}
+```
+
+Let's break down the syntax:
+
+- first is the `function` keyword
+- then the name of the function
+- then parentheses `()` around the function's _parameters_
+- next a block of code, surrounded by curly braces `{` and `}`
+
+Like the `if` statement, there's a block of code between `{` and `}`. This block is called the
+function's _body_. It's the code that runs when we call the function.
+
+Using the `fancyLog` function is like using `alert` or `console.log`:
+
+```js
+fancyLog('This is log is so ✨ fancy ✨');
+console.log('This is log is not so fancy');
+```
+
+Let's break down what happens when you call `fancyLog`:
+
+1. The parameter _message_ gets bound to the value of the argument `'This is log is so ✨ fancy ✨'`
+2. The code in the function's body runs step by step
+
+- first it logs `'>>>>>>>'`
+- then it logs `message`, which in this case is `'This log is so ✨ fancy ✨'`
+- then it logs `'>>>>>>>'` again
+
+3. Then it comes back to where the function is called, and keeps going with the `console.log`
+
+We can use our function as much as we like, which can save us from typing out repeated code.
+
+```js
+fancyLog('Super fancy');
+fancyLog("That's how you know we're fancy developers");
+fancyLog('Because our logs have sweet <<<<<');
+```
+
+## More built-in functions and properties
+
+The browser has a lot of built-in functions and objects. Here's a short list of some of the most
+useful ones when you're just getting started programming in JavaScript.
+
+### querySelector
+
+To do something with an element on the page, you need to get that element. `document.querySelector`
+is a function that takes in a CSS selector as a string, and returns the first element that matches
+the selector.
+
+Once you have the element, you can do stuff with it, like change its contents or style, remove it,
+add elements inside it, or add an event listener to it.
+
+### querySelectorAll
+
+`querySelector` returns only one element. If you want all the matching elements, use
+`querySelectorAll`. It takes a string CSS selector, and returns all the elements that match the
+selector.
+
+### innerHTML
+
+`innerHTML` is a property of an element. a string of HTML representing the contents inside an
+element.
+
+### innerText
+
+`innerText` is similar to `innerHTML`, but it skips the HTML elements and only returns the text.
+
+### Math.random
+
+The global `Math` object has a bunch of useful math functions. `random` returns a random number
+between 0 and 1. It gives a different result each time you run it.
+
+It's useful if you want to write a program that does different when run, but isn't based on user
+input.
+
+### addEventListener
+
+If you want to respond to an event in the browser, you can add an _event listener_ with code to run
+when the event happens.
+
+You add an event listener to a particular element, to listen for that event on that element.
+
+Here's an example:
+
+```html
+<button>Click to alert!</button>
+```
+
+```js
+let button = document.querySelector('button');
+button.addEventListener('click', function () {
+  alert('The button was clicked');
+});
+```
+
+`addEventListener` is different from other functions we've seen so far. Let's look at it.
+
+It takes in two arguments. The first (`'click'`) is a string event name. This is the kind of event
+to listen for.
+
+The second argument is a _callback_. It's a function with the code to run when button is clicked.
+
+<Info>
+
+There are a lot of events you can listen for. MDN has an
+[Event Reference](https://developer.mozilla.org/en-US/docs/Web/Events) that lists most of them.
+We'll stick to `'click'` for now, but you'll see other common events in future examples.
+
+</Info>
+
 ### Callbacks
 
-## Looping
+Let's look again at the function in the `addEventListener` example:
+
+```
+  function () {
+    alert('The button was clicked');
+  }
+```
+
+Nothing special about this function makes it a callback. It's a callback because we pass it to
+another function to call later.
+
+It's still a function. We can put whatever code we want inside. That's the code that runs later - it
+gets 'called back', hence the name _callback_.
+
+There are lots of functions in JavaScript like `addEventListener` that run some code later on.
+Often, those functions will use callbacks: they'll take in a function as an argument, and run that
+code later.
+
+### setTimeout
+
+If you want to run some code later, `setTimeout` lets you do that. You pass it a function to run
+later and a number of milliseconds to wait.
+
+<JsDemo defer>
+
+```js
+setTimeout(function () {
+  alert('This happens after waiting 2 seconds');
+}, 2000);
+```
+
+</JsDemo>
+
+A millisecond is 1/1000 seconds, so waiting 2000ms is the same as waiting 1 second.
+
+The first argument to `setTimeout` is a _callback_. It's a function to run after waiting.
+
+### setInterval
+
+`setInterval` is like `setTimeout`, except it runs the function again and again after each interval.
+
+<JsDemo defer>
+
+```js
+setInterval(function () {
+  console.log('This message will be logged every 4 seconds');
+}, 4000);
+```
+
+</JsDemo>
+
+Every 4 seconds (4000ms), the callback function will run.
+
+<Info>
+
+_Stopping a timeout or interval_
+
+You might want to cancel a timeout or interval you've set. You can use the `clearTimeout` or
+`clearInterval` function to clear a timeout or interval you've set. To use it, you have to know
+which interval or timeout you're removing.
+
+When you call `setTimeout` or `setInterval`, the function returns an id number. Pass that id number
+to `clearTimeout` or `clearInterval` to clear that timeout or interval.
+
+Here's an example with `setTimeout`:
+
+```
+let timeoutId = setTimeout(function () {
+  console.log("This won't get logged, because the timeout will get cleared first");
+}, 3000);
+clearTimeout(timeoutId);
+```
+
+`clearInterval` works similarly.
+
+</Info>
 
 ## Arrays
 
-Aside: 'literal' syntaxes
+A variable can only hold one piece of data. Objects are a tool to combine objects into a bigger
+piece of data. Each object property has a name and a value.
 
-### Helpful functions and properties to know
+Arrays are a kind of Object that acts as a list.
 
-- querySelector
-- querySelectorAll
-- innerHTML
-- setTimeout
-- addEventListener
-- Math.random
+```js
+let groceryList = ['crunchy carrot', 'tasty tangerine', 'sweet strawberry'];
+```
+
+`groceryList` is an array of strings. The variable still holds one value, the array. The _array_
+holds three items.
+
+To create an array, you use the square brackets `[]`, with the items inside, separated by commas.
+
+### Accessing array items
+
+To get an item from an array, you use square brackets and an _index_: the position of the item you
+want.
+
+```js
+groceryList[1]; // 'tasty tangerine'
+```
+
+Huh. That's the second item in the list.
+
+In JavaScript, array indexes start from 0. It's like we're counting how many items to skip before
+the item we want. The first item in an array has zero items to skip before it, so we access it like:
+
+```js
+groceryList[0]; // 'crunchy carrot'
+```
+
+No items to skip over, so the index is 0.
+
+Zero-indexed arrays are common to lots of programming languages. There's a lot of programmer memes
+about "programmers start counting at zero". Now you can understand those memes too!
+
+### Length
+
+Arrays have a `length` property that gives the number of items.
+
+```js
+let groceryList = ['crunchy carrot', 'tasty tangerine', 'sweet strawberry'];
+groceryList.length; // 3
+```
+
+It's a property on the array object.
+
+### Array methods
+
+There's a lot of useful built-in functions for working with arrays.
+
+To add an item to the end of an array, you can use `push`
+
+```js
+groceryList.push('perfect peach');
+console.log(groceryList); // ['crunchy carrot', 'tasty tangerine', 'sweet strawberry', 'perfect peach']
+```
+
+You get the `push` function by accessing it on the array with a `.`, so `groceryList.push`.
+
+Functions that are attached to objects this way are called "methods". You can see a list of all the
+[Array methods on MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods).
+
+Working with arrays is really common in programming, so you'll get lots of practice with it.
+
+## Loops
+
+If you want to do something lots of times, you need some kind of loop. JavaScript has lots of kinds
+of loops, but we're just going to focus on three kinds for now.
+
+<Info>
+
+Computers are really fast. Lots of the cool things we can do with computers come from doing simple
+things a huge number of times.
+
+How fast are we talking?
+
+Well, a modern processor usually has a _clock speed_ between 2 and 3 GHz. GHz is giga hertz, a unit
+that means "billion things per second". So, a processor can do 2 or 3 billion things per second. The
+_things_ are really basic - like "add two numbers together". But, if you can turn those numbers into
+images, music, pages, and buttons, 2 billion per second can do a lot!
+
+Using this extraordinary speed directly usually means using loops.
+
+</Info>
+
+### forEach: Loop through the items in an array
+
+To do something for each item in an array, use `forEach`.
+
+```
+let groceryList = ['crunchy carrot', 'tasty tangerine', 'sweet strawberry'];
+groceryList.forEach(function (item) {
+  console.log("Buying the " + item);
+});
+// Logs:
+// Buying the crunchy carrot
+// Buying the tasty tangerine
+// Buying the sweet strawberry
+```
+
+`forEach` is a method on an array, (like `push`), and it takes a callback function to run on each of
+the items. It runs the function once for every item in the list, passing in each item as the first
+argument.
+
+#### `forEach` and `querySelectorAll`
+
+A useful pattern for small websites is to combine `forEach` with `querySelectorAll` to do something
+for all the elements that match a particular selector.
+
+This (somewhat silly) snippet finds all the list items, logs their `innerText`, and removes them.
+That's probably not that useful, but the pattern "find all the matching elements and do something
+with each one" is handy.
+
+```js
+let listItems = document.querySelectorAll('li');
+allTheListItems.forEach(function (item) {
+  console.log(item.innerText);
+  item.remove();
+});
+```
+
+### while
+
+If you want to run some code a bunch of times and an array isn't involved, one fundamental looping
+tool is the `while` loop.
+
+```js
+let response = '';
+while (response !== 'quit') {
+  response = prompt("Type 'quit' to exit the loop");
+}
+```
+
+The syntax is like an `if` statement.
+
+```
+while (condition) {
+  code to run for as long as the condition is true
+}
+```
+
+The condition will get checked before the loop starts. If it's `true`, then the code in the loop
+will run. Then the condition will be checked again. If it's still `true`, then the code will run
+again. This process will repeat again and again until the condition is `false`.
+
+Here's an example where the loop multiplies all the numbers from 1 to 20:
+
+```js
+let number = 1;
+let total = 1;
+while (number <= 20) {
+  total = total * number;
+  number = number + 1;
+}
+console.log('number: ' + number);
+console.log('total: ' + total);
+```
+
+If you run this, the console shows:
+
+```
+number: 21
+total: 2432902008176640000
+```
+
+That's more than I'd want to calculate by hand.
+
+<FlashCard>
+<Prompt>
+
+Why is `number` 21, if the condition in the while loop is `number <= 20`
+
+</Prompt>
+<Answer>
+
+Each time the loop body executes, number goes up by one. On the last time through the loop body,
+number is 20. We could pretend that the code turns into:
+
+```
+  total = total * 20;
+  number = 20 + 1;
+```
+
+After those lines execute, number is 21. Then, the while loop condition is checked one more time:
+
+```
+21 <= 20 // false
+```
+
+Since it's false, the while loop stops.
+
+</Answer>
+</FlashCard>
+
+<Info>
+
+**Infinite Loops**
+
+If the condition is never `false`, the loop will keep going indefinitely. Sometimes, that's an
+accident, and you'll need to stop the program and change the code before you run it again. Other
+times, an infinite loop is actually what you want! For instance, in a game, you might have a loop
+that updates the screen, for as long as the game is running.
+
+</Info>
+
+### for
+
+In the multiply-all-the-numbers example above, code before the loop, in the condition, and inside
+the loop body that determined how long the loop ran:
+
+- The starting value of the `number` variable was set before the loop started
+- The condition to check was in the parentheses
+- The `number` variable was updated in the loop body
+
+These three parts are really common in a lot of looping situations. Where does the loop start? Where
+does the loop end? How does it get updated each time?
+
+In a `for` loop, all three of those pieces go in the parentheses. Here's the same multiplication
+example, but using a `for` loop:
+
+```js
+let total = 1;
+for (let number = 1; number <= 20; number = number + 1) {
+  total = total * number;
+}
+console.log('number: ' + number); // number: 21
+console.log('total: ' + total); // total: 2432902008176640000
+```
+
+Some programmers like this syntax better, because it has all the code about where the loop stops and
+starts in one place. It's also fewer lines than the other example, and it's how some other popular
+languages express looping.
+
+For most problems, using whichever kind of loop you want to use is okay. Almost any loop can do what
+the other loops can do.
 
 ### Aside: Semicolons
+
+`;` is a semicolon. Some of the examples had semicolons at the end of the line, some did not.
 
 Js uses semicolons to end a statement.
 
@@ -744,7 +1192,7 @@ var x = 10
 alert(x * 10)
 ```
 
-and it turns into
+and when it runs, it turns into
 
 ```js
 var x = 10;
@@ -753,8 +1201,8 @@ alert(x * 10);
 
 Some people like to write code without semicolons, some people like to write code with semicolons.
 
-There's a couple situations where there's a difference, but usually you can choose which style you
-like best.
+There's a couple situations where there's a difference, but usually you can choose whichever style
+you like best.
 
 ### Potential Misconception: If vs. When
 
@@ -774,27 +1222,37 @@ The code will not run again on its own if `age` changes.
 To take some action when something happens, we use `addEventListener` to set up our response to the
 _event_. Run this code _when_ the event happens.
 
-## Recommended Resources
-
-- MDN for comprehensive documentation
-
 ## Things we have not covered
 
-- execution context, scope, and globals
-- destructuring assignment
-- arrow functions
-- hoisting
+As you can tell, JavaScript has a lot more moving parts than HTML or CSS. This intro has covered a
+lot, but it has left out even more.
+
+We've covered enough of the basics of the language that you can try things out, build something
+interesting, run into some issues and roadblocks, and find out more.
+
+<Info>
+
+Here's a partial list of JavaScript features that we haven't covered here, but are probably worth
+learning:
+
 - regular expressions
-- template literals
-- special characters and escaping
-- switch
-- break and continue
-- for, while, for in, for of
 - errors, throw, try, catch, finally
-- Error
-- Map and Set
+- for in, for of
+- switch, break, and continue
+- special characters and escaping
+- template literals
+- hoisting
+- execution context, scope, and globals
+- new, class, inheritance, prototypes
+- this
 - get and set
-- JSON
-- Date
-- Promises and Async
-- class, new
+- arrow functions
+- destructuring assignment
+- Promises, async
+- fetch
+- generators, yield
+- Map, Set
+- Date, JSON
+- libraries
+
+</Info>
