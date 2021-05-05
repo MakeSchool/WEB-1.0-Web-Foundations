@@ -1,6 +1,12 @@
 .code pre,
 .code div {
   height: 100%;
+  /*
+  these terrible !important declarations
+  are to override inline styles in the code highlighter
+  they are scoped to this css module, at least
+  */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+  white-space: pre-wrap !important;
 }
