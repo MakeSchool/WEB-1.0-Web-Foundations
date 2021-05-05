@@ -24,42 +24,44 @@ possibilities are infinite!
 - Use functions to generate content
 - Add new content to the feed when the scroll reaches the bottom of the screen
 - Make separate files for HTML, CSS, and JS
-- Write small functions (about 3 to 10 lines) and compose them to make the overall program. There's
-  not a strict number of functions you have to use, but it would be surprising if you use fewer
-  than 5.
 - Use at least two loops (in the demo, we loop in the link generator and when adding lots of content
   at once)
+- Write small functions (about 3 to 10 lines) and compose them to make the overall program.
 
-Make it your own! Write content generating functions that are
+There's not a strict number of functions you have to use, but it would be surprising if you use
+fewer than 5.
 
-## Mise En Place
+Make it your own! Write content that makes you and your friends laugh.
+
+## Mise en place
 
 Before you start coding, do your prep! You can write your notes in a document or on paper - wherever
 is best for you.
 
 Here's some things you'll need in your plan:
 
-1. What content will you generate for your site?
+1. **What content will you generate for your site?**
 
-Decide on the kind of content you're going to have in your feed. Come up with a few sample items,
-either by searching for them or by writing them yourself.
+   Decide on the kind of content you're going to have in your feed. Come up with a few sample items,
+   either by searching for them or by writing them yourself.
 
-2. Plan the content generator functions
+2. **Plan the content generator functions**
 
-Without writing the code, come up with a plan for how the functions will work. You might write
-pseudocode or the big-picture steps that the code will follow to generate a new item.
+   Without writing the code, come up with a plan for how the functions will work. You might write
+   pseudocode or the big-picture steps that the code will follow to generate a new item.
 
-3. Styles
+3. **Design and Styles**
 
-The demo site's styles are pretty simple. You can use it as a starting point, or you can take your
-own approach. As much as possible, pick your design elements before you get started coding.
+   The demo site's styles are pretty simple. You can use it as a starting point, or you can take
+   your own approach. As much as possible, pick your design elements before you get started coding.
 
-4. Plan your code
+4. **Plan your code**
 
-You've practiced adding content to the page, and you've practiced writing functions that generate
-text. The other feature of this project is loading more content **when the user scrolls to the
-bottom of the screen**. How do you detect that with code? There's no easy event listener to add -
-the browser doesn't have a 'scrollToBottom' event. Instead, there's a handful of other approaches.
+   You've practiced adding content to the page, and you've practiced writing functions that generate
+   text. The other feature of this project is loading more content **when the user scrolls to the
+   bottom of the screen**. How do you detect that with code? There's no easy event listener to add -
+   the browser doesn't have a 'scrollToBottom' event. Instead, there's a handful of other
+   approaches.
 
 Read more below about how to detect reaching the bottom of the screen.
 
@@ -75,8 +77,8 @@ math involved.
 
 ![screenshot of demo site, with viewport and window labeled](infinite-scroll-demo-viewport-window.png)
 
-The 'viewport' is the section of the window that shows on the screen. The 'window' is larget than
-the viewport - it's got more content, that the user can scroll to see.
+The _window_ has all the content we could scroll to. The _viewport_ is the section of the window
+that shows on the screen.
 
 ![screenshot of demo site scrolled down, with viewport and window labeled](infinite-scroll-viewport-window-scrolled.png)
 
@@ -95,13 +97,13 @@ document.documentElement.clientHeight; // how tall the viewport is
 document.documentElement.scrollTop; // how far we've scrolled from the top
 ```
 
-![screenshot of demo site, with scrollHeight, clientHeight, and scrollTop labeled](infinite-scroll-viewport-window-scrolled.png)
+![screenshot of demo site, with scrollHeight, clientHeight, and scrollTop labeled](infinite-scroll-demo-height-properties-labeled.png)
 
 If `scrollTop` plus `clientHeight` is greater than or equal to `scrollHeight`, then we've scrolled
 to the bottom.
 
 ```js
-scrollTop + clientHeight >= scrollHeight; // are scrolled to the bottom?
+scrollTop + clientHeight >= scrollHeight; // scrolled to the bottom?
 ```
 
 One problem. Sometimes the browser gives a fractional number for `scrollTop`, so it doesn't quite
@@ -114,7 +116,7 @@ scrollTop + clientHeight >= scrollHeight - 10; // scrolled to the bottom, with f
 
 <Info>
 
-There's a newer approach using a new tool called an IntersectionObserver.
+There's a newer approach to this problem using a tool called an IntersectionObserver.
 
 It's less familiar than the event listeners we've been using so far, but some of the same ideas
 apply. See the
