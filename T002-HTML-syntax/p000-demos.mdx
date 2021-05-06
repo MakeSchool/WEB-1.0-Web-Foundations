@@ -10,12 +10,6 @@ import JsDemo from '../JsDemo';
 
 <MagicDemo
   initialState={{title: 'Intro to Recycling', tagline: 'Learn about recycling'}}
-  input={(state, updateState) => (
-    <>
-      <MagicInput name="title" state={state} updateState={updateState} />
-      <MagicInput name="tagline" state={state} updateState={updateState} />
-    </>
-  )}
   template={state => `<div>
   <h1>${state.title}</h1>
   <h2>${state.tagline}</h2>
@@ -23,17 +17,11 @@ import JsDemo from '../JsDemo';
 />
 
 <MagicDemo
-  initialState={{backgroundColor: '#EEEEEE', color: '#111111'}}
-  input={(state, updateState) => (
-    <>
-      <MagicInput type="color" name="background color" state={state} updateState={updateState} />
-      <MagicInput type="color" name="text color" state={state} updateState={updateState} />
-    </>
-  )}
+  initialState={{['background color']: '#EEEEEE', color: '#111111'}}
   template={state =>
     `<style>
   div {
-    background-color: ${state.backgroundColor};
+    background-color: ${state['background color']};
   }
   h1, h2 {
     color: ${state.color};

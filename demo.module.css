@@ -54,10 +54,10 @@
 }
 
 .inputs input {
-  padding: 4px;
-  font-size: 18px;
+  padding: 0.25em;
+  font-size: 16px;
   border-radius: 4px;
-  border-width: 2px;
+  border-width: 4px;
   border-style: solid;
   border-color: #90caf9;
   width: 80%;
@@ -68,4 +68,7 @@
   width: 60px;
   font-size: 14px;
   text-transform: capitalize;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }

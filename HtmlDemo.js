@@ -43,9 +43,9 @@ const makeSrcString = nodes => {
     .join('\n\n');
 };
 
-const HtmlDemo = ({children, srcString}) => {
+const HtmlDemo = ({children, srcString, lineColors}) => {
   const src = srcString || makeSrcString(React.Children.toArray(children));
-  const display = children || <CodeHighlighter>{src}</CodeHighlighter>;
+  const display = children || <CodeHighlighter lineColors={lineColors}>{src}</CodeHighlighter>;
   return (
     <div className={demoStyles.wrapper}>
       <div style={styles.tab}>
