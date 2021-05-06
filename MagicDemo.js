@@ -4,7 +4,7 @@ import * as styles from './demo.module.css';
 
 const MagicInput = ({name, color, type = 'text', state, updateState}) => (
   <div>
-    <label style={{textDecorationColor: color}} for={name}>
+    <label style={{textDecorationColor: color}} htmlFor={name}>
       {name}
     </label>
     <input
@@ -75,6 +75,26 @@ const MagicDemo = ({template, initialState = {}}) => {
     }
   });
 
+  // please excuse this hack
+  // it's styling the elements in the iframe with the magic colors
+  // it's evaluating a script in the iframe
+  // the script uses an xpath to find the elements with matching text :o
+  // and adds a border to those nodes, with the matching color
+  let extra = `
+ <script>
+
+  function highlight(value, color) {
+    let result = document.evaluate('//*[text()="' + value + '"]', document, null, XPathResult.ANY_TYPE);
+    let found = [];
+    while(res = result.iterateNext()) {
+      found.push(res);
+    }
+    found.forEach(node => {node.style.border = '4px solid ' + color})
+  }
+
+  ${names.map(name => `highlight("${inputState[name]}", "${colorMap[name]}")`).join(';\n\t')};
+</script>`;
+
   return (
     <div className={styles.magic}>
       <div className={styles.label}>Playground</div>
@@ -82,7 +102,7 @@ const MagicDemo = ({template, initialState = {}}) => {
         Try changing these values. See what changes in the code and in the output.
       </div>
       <div className={styles.inputs}>{inputs}</div>
-      <HtmlDemo lineColors={lineColors} srcString={srcString} />
+      <HtmlDemo lineColors={lineColors} srcString={srcString} extra={extra} />
     </div>
   );
 };

@@ -43,7 +43,7 @@ const makeSrcString = nodes => {
     .join('\n\n');
 };
 
-const HtmlDemo = ({children, srcString, lineColors}) => {
+const HtmlDemo = ({children, srcString, lineColors, extra}) => {
   const src = srcString || makeSrcString(React.Children.toArray(children));
   const display = children || <CodeHighlighter lineColors={lineColors}>{src}</CodeHighlighter>;
   return (
@@ -56,7 +56,7 @@ const HtmlDemo = ({children, srcString, lineColors}) => {
       </div>
       <div style={styles.tab}>
         <div className={demoStyles.label}>Result</div>
-        <iframe style={styles.output} srcDoc={src}></iframe>
+        <iframe style={styles.output} srcDoc={[src, extra].join('\n')}></iframe>
       </div>
     </div>
   );
