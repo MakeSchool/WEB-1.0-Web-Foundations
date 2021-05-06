@@ -5,65 +5,45 @@ contentType: 'TextContent'
 ---
 
 import HtmlDemo from '../HtmlDemo';
-import MagicDemo from '../MagicDemo';
+import MagicDemo, {MagicInput} from '../MagicDemo';
 import JsDemo from '../JsDemo';
-
-<HtmlDemo>
-
-```html
-<p>This tender treat is a perfect use for any old bananas you have sitting on the counter.</p>
-```
-
-</HtmlDemo>
-
-<HtmlDemo>
-
-```html
-<h1>Easy Chocolate Chip Banana Bread</h1>
-<ul>
-  <li>10 minutes prep time</li>
-  <li>50 minutes bake time</li>
-  <li>1 hr total</li>
-  <li>Makes 6 servings</li>
-</ul>
-<img src="./banana-bread.jpeg" />
-```
-
-</HtmlDemo>
-
-<HtmlDemo>
-
-```html
-<ol>
-  <li>Preheat oven to 350˚F (180˚C).</li>
-  <li>
-    In a bowl, add the bananas and mash until smooth. Add in the melted butter and stir until well
-    combined.
-  </li>
-  <li>
-    Add the sugar, egg, vanilla, baking soda, salt, and flour, and stir until the batter is smooth.
-  </li>
-</ol>
-```
-
-</HtmlDemo>
 
 <MagicDemo
   initialState={{title: 'Intro to Recycling', tagline: 'Learn about recycling'}}
   input={(state, updateState) => (
     <>
-      Title:{' '}
-      <input value={state.title} onChange={e => updateState({...state, title: e.target.value})} />
-      Tagline: <input
-        value={state.tagline}
-        onChange={e => updateState({...state, tagline: e.target.value})}
-      />
+      <MagicInput name="title" state={state} updateState={updateState} />
+      <MagicInput name="tagline" state={state} updateState={updateState} />
     </>
   )}
   template={state => `<div>
   <h1>${state.title}</h1>
   <h2>${state.tagline}</h2>
 </div>`}
+/>
+
+<MagicDemo
+  initialState={{backgroundColor: '#EEEEEE', color: '#111111'}}
+  input={(state, updateState) => (
+    <>
+      <MagicInput type="color" name="background color" state={state} updateState={updateState} />
+      <MagicInput type="color" name="text color" state={state} updateState={updateState} />
+    </>
+  )}
+  template={state =>
+    `<style>
+  div {
+    background-color: ${state.backgroundColor};
+  }
+  h1, h2 {
+    color: ${state.color};
+  }
+</style>
+<div>
+  <h1>Small Changes, Big Impacts</h1>
+  <h2>An Exploration of Climate Action</h2>
+</div>`
+  }
 />
 
 <JsDemo defer>
@@ -107,3 +87,17 @@ button.addEventListener('click', function () {
 ```
 
 </JsDemo>
+
+<HtmlDemo>
+
+```html
+<ol>
+  <li>Preheat oven to 350˚F (180˚C).</li>
+  <li>
+    In a bowl, add the bananas and mash until smooth. Add in the melted butter and stir until well
+    combined.
+  </li>
+</ol>
+```
+
+</HtmlDemo>
