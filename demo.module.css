@@ -62,7 +62,7 @@ div:global(.language-js)::before {
   top: -20px;
   right: 22px;
   padding: 4px;
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: #90caf9;
   border: 1px solid #2d3748;
   color: #2d3748;
@@ -133,3 +133,24 @@ div:global(.language-css)::before {
 }
 
 /* specific to js-demo */
+.result {
+  display: grid;
+  row-gap: 4px;
+  grid-template:
+    'label button .' 32px
+    'output output output' 230px / 25% 50% 25%;
+}
+
+.result button {
+  grid-area: button;
+  margin: 0px auto;
+}
+
+.result label {
+  grid-area: label;
+}
+
+.result iframe {
+  grid-area: output;
+  width: 100%;
+}

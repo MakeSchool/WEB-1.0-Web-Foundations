@@ -35,9 +35,14 @@ const JsDemo = ({children, defer = false}) => {
         <div className={styles.label}>Code</div>
         <div className={styles.code}>{children}</div>
       </div>
-      <div className={styles.tab}>
+      <div className={`${styles.tab} ${styles.result}`}>
         <div className={styles.label}>Result</div>
-        <button onClick={() => setRun(true)}>Run</button>
+        <button
+          className={'MuiButtonBase-root MuiButton-root MuiButton-containedPrimary'}
+          onClick={() => setRun(true)}
+        >
+          Run
+        </button>
         <iframe
           className={styles.output}
           srcDoc={run ? srcString : 'Click run to see the result'}
