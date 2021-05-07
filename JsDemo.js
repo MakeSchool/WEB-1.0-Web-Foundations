@@ -96,7 +96,7 @@ const JsDemo = ({children, defer = false}) => {
             Run
           </button>
         )}
-        <div className={styles.output}>
+        <div className={styles.content}>
           <iframe
             className={clsx(styles.frame, !hasHtml && styles.hide)}
             srcDoc={

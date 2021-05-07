@@ -150,7 +150,7 @@ div:global(.language-css)::before {
   grid-area: label;
 }
 
-.result .output {
+.result .content {
   grid-area: output;
   width: 100%;
   display: flex;
@@ -172,6 +172,7 @@ div:global(.language-css)::before {
   padding: 8px;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1em;
+  overflow-y: scroll;
 }
 
 .result .console .error {
