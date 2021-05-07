@@ -54,6 +54,7 @@ const MagicDemo = ({template, initialState = {}}) => {
 
   const inputs = names.map(name => (
     <MagicInput
+      key={name}
       type={type(initialState[name])}
       color={colorMap[name]}
       name={name}

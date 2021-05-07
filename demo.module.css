@@ -138,7 +138,7 @@ div:global(.language-css)::before {
   row-gap: 4px;
   grid-template:
     'label button .' 32px
-    'output output output' 230px / 25% 50% 25%;
+    'output output output' auto / 25% 50% 25%;
 }
 
 .result button {
@@ -150,7 +150,34 @@ div:global(.language-css)::before {
   grid-area: label;
 }
 
-.result iframe {
+.result .output {
   grid-area: output;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #2d3748;
+  row-gap: 24px;
+}
+
+.result .frame {
+  width: 100%;
+  flex: 1 1 100%;
+  max-height: 230px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.3em;
+}
+
+.result .console {
+  padding: 8px;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
+}
+
+.result .console .error {
+  color: #f0897d;
+}
+
+.hide {
+  display: none;
 }

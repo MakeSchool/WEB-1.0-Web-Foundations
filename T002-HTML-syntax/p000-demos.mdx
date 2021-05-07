@@ -47,6 +47,9 @@ alert('Hi there!');
 ```js
 console.log('5 * 5 is ...');
 console.log(5 * 5);
+console.log('6 * 5 is ...');
+console.log(6 * 5);
+throw new Error('something went wrong');
 ```
 
 </JsDemo>
@@ -69,8 +72,13 @@ let indexToEat = 0;
 button.addEventListener('click', function () {
   let items = document.querySelectorAll('li');
   let snack = items[indexToEat];
-  snack.innerText = 'The monster ate it!';
-  indexToEat = indexToEat + 1;
+  if (snack) {
+    console.log('num num num, ' + snack.innerText + ', tasty');
+    snack.innerText = 'The monster ate it!';
+    indexToEat = indexToEat + 1;
+  } else {
+    console.log('😢 monster is sad, no more snacks');
+  }
 });
 ```
 
