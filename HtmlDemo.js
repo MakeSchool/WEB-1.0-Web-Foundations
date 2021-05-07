@@ -1,25 +1,6 @@
 import React from 'react';
 import {CodeHighlighter} from 'components/atoms';
-import * as demoStyles from './demo.module.css';
-
-const styles = {
-  tab: {
-    display: 'flex',
-    flex: '1',
-    flexFlow: 'column nowrap',
-    margin: '2px',
-    minWidth: '380px',
-  },
-  code: {
-    height: 230,
-  },
-  output: {
-    height: 230,
-    border: 'none',
-    backgroundColor: 'rgb(255,255,255)',
-    borderRadius: '0.3em',
-  },
-};
+import * as styles from './demo.module.css';
 
 const codeBlocks = nodes =>
   nodes
@@ -47,16 +28,14 @@ const HtmlDemo = ({children, srcString, lineColors, extra}) => {
   const src = srcString || makeSrcString(React.Children.toArray(children));
   const display = children || <CodeHighlighter lineColors={lineColors}>{src}</CodeHighlighter>;
   return (
-    <div className={demoStyles.wrapper}>
-      <div style={styles.tab}>
-        <div className={demoStyles.label}>Code</div>
-        <div className={demoStyles.code} style={styles.code}>
-          {display}
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.tab}>
+        <div className={styles.label}>Code</div>
+        <div className={styles.code}>{display}</div>
       </div>
-      <div style={styles.tab}>
-        <div className={demoStyles.label}>Result</div>
-        <iframe style={styles.output} srcDoc={[src, extra].join('\n')}></iframe>
+      <div className={styles.tab}>
+        <div className={styles.label}>Result</div>
+        <iframe className={styles.output} srcDoc={[src, extra].join('\n')}></iframe>
       </div>
     </div>
   );

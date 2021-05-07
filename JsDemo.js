@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import * as styles from './demo.module.css';
 
 /*
   Renders child code blocks as children and as an embedded iframe.
@@ -29,11 +30,18 @@ const JsDemo = ({children, defer = false}) => {
   let [run, setRun] = useState(!defer);
   const srcString = makeSrcString(React.Children.toArray(children));
   return (
-    <div>
-      <div>{children}</div>
-      <button onClick={() => setRun(true)}>Run</button>
-      <div>
-        <iframe srcDoc={run ? srcString : 'Click run to see the result'}></iframe>
+    <div className={styles.wrapper}>
+      <div className={styles.tab}>
+        <div className={styles.label}>Code</div>
+        <div className={styles.code}>{children}</div>
+      </div>
+      <div className={styles.tab}>
+        <div className={styles.label}>Result</div>
+        <button onClick={() => setRun(true)}>Run</button>
+        <iframe
+          className={styles.output}
+          srcDoc={run ? srcString : 'Click run to see the result'}
+        ></iframe>
       </div>
     </div>
   );

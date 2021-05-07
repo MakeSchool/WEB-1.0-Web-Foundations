@@ -1,16 +1,4 @@
-.code pre,
-.code div {
-  height: 100%;
-  /*
-  these terrible !important declarations
-  are to override inline styles in the code highlighter
-  they are scoped to this css module, at least
-  */
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  white-space: pre-wrap !important;
-}
-
+/* shared between demo components */
 .wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -19,10 +7,6 @@
   border: 1px solid #2d3748;
   background-color: #2d3748;
   border-radius: 4px;
-}
-
-.magic .wrapper {
-  margin-top: 0;
 }
 
 .label {
@@ -34,11 +18,85 @@
   font-weight: bold;
 }
 
+.tab {
+  display: flex;
+  flex: 1;
+  flex-flow: column nowrap;
+  margin: 2px;
+  min-width: 380px;
+}
+
+.code {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  min-height: 230px;
+}
+
+.code pre,
+.code div {
+  flex: 1 1 100%;
+  display: flex;
+  max-height: 230px;
+  /*
+  these !important declarations
+  are to override inline styles in the code highlighter
+  they are scoped to this css module, at least
+  */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  white-space: pre-wrap !important;
+}
+
+/* language labels */
+div:global(.language-js),
+div:global(.language-html),
+div:global(.language-css) {
+  position: relative;
+}
+
+div:global(.language-css)::before,
+div:global(.language-html)::before,
+div:global(.language-js)::before {
+  position: absolute;
+  top: -20px;
+  right: 22px;
+  padding: 4px;
+  border-radius: 2px;
+  background-color: #90caf9;
+  border: 1px solid #2d3748;
+  color: #2d3748;
+}
+
+div:global(.language-js)::before {
+  content: 'JavaScript';
+}
+
+div:global(.language-html)::before {
+  content: 'HTML';
+}
+
+div:global(.language-css)::before {
+  content: 'CSS';
+}
+
+.output {
+  height: 230px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.3em;
+}
+
+/* specific to magic-demo */
 .magic {
   background-color: #2d3748;
   color: rgb(238, 238, 239);
   border-radius: 4px;
   padding-top: 6px;
+}
+
+.magic .wrapper {
+  margin-top: 0;
 }
 
 .hint {
@@ -65,10 +123,13 @@
 
 .inputs label {
   display: inline-block;
-  width: 60px;
+  min-width: 60px;
+  margin-right: 1rem;
   font-size: 14px;
   text-transform: capitalize;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
+
+/* specific to js-demo */
