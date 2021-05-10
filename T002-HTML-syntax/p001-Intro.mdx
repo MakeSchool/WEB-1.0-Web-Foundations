@@ -69,6 +69,8 @@ On a US-style english keyboard layout, the angle brackets are on the comma (`,`)
 keys, towards the bottom right side of the keyboard. Hold shift and press `,` for the `<` character.
 Shift + `.` for the `>` character.
 
+The forward slash `/` is to the right of the key with `>` on it.
+
 </Explanation>
 </TextResponse>
 
@@ -225,10 +227,51 @@ Last, the element that makes the web different from other kinds of documents: th
 
 The `a` stands for "anchor", which is a weird word for a link! Even weirder is `href`, the attribute
 that tells the browser where to go when you click. It stands for "Hypertext reference". It's a
-_reference_ - a pointer - to some other HyperText.
+_reference_ - a pointer - to some other _HyperText_.
 
 What's "Hypertext"? Well - all of the web. `HTML` stands for "HyperText Markup Language". The web is
 made of hypertext - text with links to other text.
+
+### What gets linked?
+
+In the example, the link text was `The History of HyperText`.
+
+```html
+<a href="https://www.nngroup.com/articles/hypertext-history/"> The History of HyperText </a>
+```
+
+Anything that is nested between the opening and closing `<a>` tags will be linked.
+
+For instance, we can link a header:
+
+```html
+<a href="https://replit.com/@makeschool2/Recipe-Page-Demo">
+  <h1>Easy Chocolate Chip Banana Bread</h1>
+</a>
+```
+
+or an image:
+
+```html
+<a href="https://replit.com/@makeschool2/Recipe-Page-Demo">
+  <img src="./banana-bread.jpeg" />
+</a>
+```
+
+or a header and an image together:
+
+<HtmlDemo>
+
+```html
+<a href="https://replit.com/@makeschool2/Recipe-Page-Demo">
+  <h1>Easy Chocolate Chip Banana Bread</h1>
+  <img src="./banana-bread.jpeg" />
+</a>
+```
+
+</HtmlDemo>
+
+Clicking on anything in the link will navigate to the `href`.
 
 ## Elements Summary
 
