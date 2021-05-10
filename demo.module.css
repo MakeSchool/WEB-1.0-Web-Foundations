@@ -40,12 +40,16 @@
   max-height: 230px;
   /*
   these !important declarations
-  are to override inline styles in the code highlighter
+  override inline styles in the code highlighter
   they are scoped to this css module, at least
   */
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   white-space: pre-wrap !important;
+}
+
+.code code {
+  word-break: break-all !important;
 }
 
 /* language labels */
