@@ -24,9 +24,12 @@ const makeSrcString = nodes => {
     .join('\n\n');
 };
 
-const HtmlDemo = ({children, srcString, lineColors, extra}) => {
-  const src = srcString || makeSrcString(React.Children.toArray(children));
+const HtmlDemo = ({children, srcString, lineColors, extra, replace = {}}) => {
+  let src = srcString || makeSrcString(React.Children.toArray(children));
   const display = children || <CodeHighlighter lineColors={lineColors}>{src}</CodeHighlighter>;
+  for (let key in replace) {
+    src = src.replaceAll(key, replace[key]);
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.tab}>

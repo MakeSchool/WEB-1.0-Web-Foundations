@@ -5,6 +5,7 @@ contentType: 'TextContent'
 ---
 
 import HtmlDemo from '../HtmlDemo';
+import BananaBread from './banana-bread.jpeg';
 
 # What is HTML?
 
@@ -30,7 +31,13 @@ looks. By the end of this topic, you'll be able to write code for this kind of s
 
 ## HTML Tags
 
-<HtmlDemo srcString="<p>This tender treat is a perfect use for any old bananas you have sitting on the counter.</p>" />
+<HtmlDemo>
+
+```html
+<p>This tender treat is a perfect use for any old bananas you have sitting on the counter.</p>
+```
+
+</HtmlDemo>
 
 The HTML turns into a paragraph of text. This an HTML **element**: a single building block of a
 webpage. Let's break down the parts of the syntax.
@@ -69,8 +76,12 @@ Shift + `.` for the `>` character.
 
 Here's another demo, with four new html elements.
 
-<HtmlDemo
-  srcString='
+<HtmlDemo replace={{
+    /* replace img so that it gets a working (imported) image path, instead of the relative path */
+    './banana-bread.jpeg': BananaBread,
+  }}>
+
+```html
 <h1>Easy Chocolate Chip Banana Bread</h1>
 <ul>
   <li>10 minutes prep time</li>
@@ -78,8 +89,10 @@ Here's another demo, with four new html elements.
   <li>1 hr total</li>
   <li>Makes 6 servings</li>
 </ul>
-<img src="./banana-bread.jpeg" />'
-/>
+<img src="./banana-bread.jpeg" />
+```
+
+</HtmlDemo>
 
 <TextResponse>
 <Prompt>
@@ -176,19 +189,32 @@ There's two more elements you'll need for the recipe page.
 The first is the ordered list, `ol`. It works just like the unordered list, but it's _ordered_. It
 shows a number next to each list item.
 
-<HtmlDemo
-  srcString="
+<HtmlDemo>
+
+```html
 <ol>
   <li>Preheat oven to 350˚F (180˚C).</li>
-  <li>In a bowl, add the bananas and mash until smooth. Add in the melted butter and stir until well combined.</li>
-  <li>Add the sugar, egg, vanilla, baking soda, salt, and flour, and stir until the batter is smooth.</li>
+  <li>
+    In a bowl, add the bananas and mash until smooth. Add in the melted butter and stir until well
+    combined.
+  </li>
+  <li>
+    Add the sugar, egg, vanilla, baking soda, salt, and flour, and stir until the batter is smooth.
+  </li>
 </ol>
-"
-/>
+```
+
+</HtmlDemo>
 
 Last, the element that makes the web different from other kinds of documents: the link.
 
-<HtmlDemo srcString="<a href='https://www.nngroup.com/articles/hypertext-history/'>The History of HyperText</a>" />
+<HtmlDemo>
+
+```html
+<a href="https://www.nngroup.com/articles/hypertext-history/">The History of HyperText </a>
+```
+
+</HtmlDemo>
 
 The `a` stands for "anchor", which is a weird word for a link! Even weirder is `href`, the attribute
 that tells the browser where to go when you click. It stands for "Hypertext reference". It's a
@@ -207,7 +233,34 @@ Here's the elements we've learned so far:
 - `img` (and the `src` attribute)
 - `a` (and the `href` attribute)
 
+<FlashCard>
+<Prompt>
+
+For each of these HTML Tags, what kind of element does it create?
+
+- `p`
+- `h1`
+- `ul`
+- `ol`
+- `li`
+- `img`
+- `a`
+
+</Prompt>
+<Answer>
+
+- `p` - paragraph
+- `h1` - heading
+- `ul` - unordered list
+- `ol` - ordered list
+- `li` - list item
+- `img` - image
+- `a` - anchor (link)
+
+</Answer>
+</FlashCard>
+
 There's a lot more HTML elements. They all follow these syntax rules. To master the rules and these
 elements, you'll need to practice building sites by writing HTML.
 
-Click to the next page to try building a recipe page of your own.
+On the next page, you'll get to practice writing some HTML of your own.
